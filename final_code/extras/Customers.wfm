@@ -1,0 +1,409 @@
+/*
+   ----------------------------------------------------------------------------
+   Customers.wfm
+   This is a form based on a different one, specifically used for the 'extra'
+   chapter of the tutorial on Shared Data, Record Locks, etc. 
+   
+   The dBASE Plus Tutorial: Developing An Application
+   April, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 04/24/2017
+//
+parameter bModal
+local f
+f = new CustomersForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class CustomersForm of FORM
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      onOpen = class::FORM_ONOPEN
+      onClose = class::FORM_ONCLOSE
+      doubleBuffered = true
+      metric = 6	// Pixels
+      height = 302.0
+      left = 311.0
+      top = 99.0
+      width = 596.0
+      text = "Shared Data Example"
+   endwith
+
+   this.SESSION1 = new SESSION(this)
+   with (this.SESSION1)
+      left = 485.0
+      top = 33.0
+      width = 46.0
+      height = 37.0
+      lockRetryCount = 1
+      lockRetryInterval = 0
+   endwith
+
+   this.DATABASE1 = new DATABASE(this)
+   with (this.DATABASE1)
+      left = 536.0
+      top = 32.0
+      width = 53.0
+      height = 37.0
+      session = form.session1
+      databaseName = "DBASETUTORIAL"
+      active = true
+   endwith
+
+   this.QUERY1 = new QUERY(this)
+   with (this.QUERY1)
+      left = 540.0
+      top = 76.0
+      width = 39.0
+      height = 37.0
+      session = form.session1
+      database = form.database1
+      sql = "select * from customer2"
+      active = true
+   endwith
+
+   with (this.QUERY1.rowset)
+      with (fields["State ID"])
+         lookupSQL = "select * from state"
+      endwith
+      with (fields["Country ID"])
+         lookupSQL = "select * from country"
+      endwith
+      indexName = "LAST NAME"
+   endwith
+
+   this.MYTITLETEXT1 = new MYTITLETEXT(this)
+   with (this.MYTITLETEXT1)
+      height = 30.0
+      left = 0.0
+      top = 0.0
+      width = 594.0
+      anchor = 2	// Top
+      text = "<p>Customer Data</p><p></p>"
+   endwith
+
+   this.MYTOOLBAR1 = new MYTOOLBAR(this)
+   with (this.MYTOOLBAR1)
+      left = 101.0
+      top = 31.0
+      width = 377.0
+      height = 34.0
+   endwith
+
+   with (this.MYTOOLBAR1.PBEDIT)
+      onClick = class::PBEDIT_ONCLICK
+   endwith
+
+   with (this.MYTOOLBAR1.PBSAVE)
+      onClick = class::PBSAVE_ONCLICK
+   endwith
+
+   with (this.MYTOOLBAR1.PBCANCEL)
+      onClick = class::PBCANCEL_ONCLICK
+   endwith
+
+   with (this.MYTOOLBAR1.PBDELETE)
+      onClick = class::PBDELETE_ONCLICK
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 22.0
+      left = 8.0
+      top = 84.0
+      width = 87.0
+      text = "Name:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.query1.rowset.fields["first name"]
+      height = 22.0
+      left = 101.0
+      top = 83.0
+      width = 124.0
+   endwith
+
+   this.MYENTRYFIELD2 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD2)
+      dataLink = form.query1.rowset.fields["last name"]
+      height = 22.0
+      left = 227.0
+      top = 83.0
+      width = 124.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 9.0
+      top = 105.0
+      width = 87.0
+      text = "Address:"
+   endwith
+
+   this.MYENTRYFIELD3 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD3)
+      dataLink = form.query1.rowset.fields["street1"]
+      height = 22.0
+      left = 101.0
+      top = 106.0
+      width = 162.0
+   endwith
+
+   this.MYENTRYFIELD4 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD4)
+      dataLink = form.query1.rowset.fields["street2"]
+      height = 22.0
+      left = 101.0
+      top = 129.0
+      width = 162.0
+   endwith
+
+   this.MYENTRYFIELD5 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD5)
+      dataLink = form.query1.rowset.fields["city"]
+      height = 22.0
+      left = 101.0
+      top = 152.0
+      width = 124.0
+   endwith
+
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.query1.rowset.fields["state id"]
+      height = 22.0
+      left = 227.0
+      top = 152.0
+      width = 143.0
+   endwith
+
+   this.MYENTRYFIELD6 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD6)
+      dataLink = form.query1.rowset.fields["postal"]
+      height = 22.0
+      left = 372.0
+      top = 152.0
+      width = 56.0
+   endwith
+
+   this.MYCOMBOBOX2 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX2)
+      dataLink = form.query1.rowset.fields["country id"]
+      height = 22.0
+      left = 431.0
+      top = 152.0
+      width = 143.0
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 9.0
+      top = 176.0
+      width = 87.0
+      text = "Phone:"
+   endwith
+
+   this.MYENTRYFIELD7 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD7)
+      dataLink = form.query1.rowset.fields["phone"]
+      height = 22.0
+      left = 101.0
+      top = 175.0
+      width = 124.0
+   endwith
+
+   this.MYTEXTLABEL4 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL4)
+      height = 22.0
+      left = 9.0
+      top = 198.0
+      width = 87.0
+      text = "Comments:"
+   endwith
+
+   this.MYEDITOR1 = new MYEDITOR(this)
+   with (this.MYEDITOR1)
+      height = 88.0
+      left = 101.0
+      top = 199.0
+      width = 472.0
+      dataLink = form.query1.rowset.fields["comments"]
+   endwith
+
+   this.rowset = this.query1.rowset
+
+   function PBCANCEL_onClick()
+      if form.rowset.modified
+			if msgbox( "Abandon changes to this row?", "Abandon changes?", 36 ) == 6
+				form.rowset.abandon()
+            // disable the timer if it is on:
+            form.t.enabled := false
+			endif
+		else
+			form.rowset.abandon()
+         // disable the timer if it is on:
+         form.t.enabled := false
+		endif     
+   return
+
+   function PBDELETE_onClick()
+      if msgbox( "Delete this row?", "Delete Row?", 36 ) == 6
+         form.rowset.delete()
+         // disable the timer if it is on:
+         form.t.enabled := false
+       endif
+   return
+
+   function PBEDIT_onClick()
+      // check for a lock on the record:
+      if form.rowset.lockRow() // attempt to lock the record now:
+         form.rowset.beginEdit() // edit it
+         // start the timer -- if user does not 
+         // unlock the row in some fashion, the timer
+         // will do it for them after a set amount of time:
+         form.seconds := 0 // set/re-set counter
+         form.t.enabled := true // enable timer
+       else
+         cUser     = form.rowset.fields["_DBASELOCK"].user
+         cDateTime = form.rowset.fields["_DBASELOCK"].lock
+         msgbox( "The row is locked by '" + cUser + "' who locked "+;
+                 "it at: "+cDateTime+"! Try again later!",;
+                 "Cannot Lock Row", 16 )
+          return
+       endif // lockRow()
+   return
+
+   function PBSAVE_onClick()
+      form.rowset.save()
+      // disable the timer if it is on:
+      form.t.enabled := false
+   return
+
+   function form_onClose()
+      // cleanup:
+      form.t.enabled := false // just to be sure
+      release object form.t 
+      form.t := null
+   return
+
+   function form_onOpen()
+      if form.rowset # null
+         // don't allow automatic editing
+         form.rowset.autoEdit := false 
+         // assign this method to the rowset's canNavigate:
+         form.rowset.canNavigate := class::rowset_canNavigate
+         // go to the first row ...
+         form.rowset.first()
+      endif
+      
+      // set up the timer:
+      form.t = new timer()
+      // create a reference to the form for the timer
+      // which knows nothing about the form or a parent:
+      form.t.parent = form
+      // when a specific interval of time is hit,
+      // what do we want the timer to do?
+      form.t.onTimer := class::LockCheck // event we will create
+      // what interval -- how often do we want to check (in seconds)?
+      form.t.interval := 5
+      // do NOT set the enabled property here!
+      form.timeOut = 2 * 60 // number of seconds, which is 
+                            // x minutes multiplied by 60 seconds each
+      form.seconds = 0      // this will be our counter
+   return
+
+   function rowset_canNavigate()
+      /*
+         Check to save any changes before allowing navigation.
+         For whatever reason, this gets called twice. If the
+         user chooses Yes to Save, or No to abandon, then
+         the next time through the rowset.modified property is
+         false so there's no problem. If the user chooses to
+         cancel the navigation, they'll get prompted twice.
+         For that reason, we set a flag to indicate it's been
+         here once. If the flag exists, we null it, if not we 
+         run the validation.
+
+         BIG Note: If a future version of dBASE™ PLUS corrects the
+         behavior so the canNavigate routine does NOT fire
+         twice, this code will not work correctly.
+        
+         Applies to all dBASE builds through dBASE™ PLUS.
+
+         Code by Gary White
+      */
+      local bYes, nAnswer
+      if type("_app.cancelNav") == "L" and _app.cancelNav
+         _app.cancelNav := null
+         bYes = false
+      else
+         bYes = true
+         if this.modified
+            nAnswer = msgbox("Save changes before leaving record?",;
+                       "Data has changed",32+3)
+            do case
+               case nAnswer == 6 // Yes
+                  this.save()
+               case nAnswer == 7 // No
+                  this.abandon()
+               otherwise         // Cancel
+                  bYes := false
+                  _app.cancelNav = true
+            endcase
+         endif
+         
+         // if we are navigating ...:
+         if bYes
+            // disable the timer on the form if it is on
+            // this = rowset
+            // parent = query
+            // parent = form
+            if type( "this.parent.parent.t" ) # "U"
+               this.parent.parent.t.enabled := false
+            endif
+         endif
+         
+      endif
+   return bYes
+
+   function LockCheck
+      // Every five seconds (timer.interval) the timer should 
+      // execute this code once the timer is enabled. Notice 
+      // that since the code here is being called from the 
+      // timer object, the timer is "this":
+      
+      // increment the 'seconds' counted by the 
+      // timer's interval value:
+      this.parent.seconds += this.interval
+
+      // if the number of seconds in the counter
+      // is equal to or greater than the maximum
+      // number of seconds in the "timeOut" property:
+      if this.parent.seconds => this.parent.timeOut
+         // we've reached the limit disable the timer
+         this.enabled := false
+
+         // now we need to abandon changes to the row,
+         // which will unlock the record, and let the 
+         // user know:
+         this.parent.rowset.abandon()
+         msgbox( "The record was locked for: "+this.parent.seconds+" seconds! "+;
+                 "It has been unlocked and any changes were abandoned.",;
+                 "Record Unlocked Automatically!", 48 )
+      endif
+   return
+
+endclass
+

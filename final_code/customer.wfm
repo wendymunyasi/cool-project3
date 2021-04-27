@@ -1,0 +1,221 @@
+/*
+   ----------------------------------------------------------------------------
+   customer.wfm
+   A form to interact with the customer data for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/11/2017
+//
+parameter bModal
+local f
+f = new customerForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class customerForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
+   set procedure to customer.dmd additive
+   set procedure to :FormControls:seeker.cc additive
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      height = 330.0
+      left = 173.0
+      top = 34.0
+      width = 578.0
+      text = "Customer Information"
+   endwith
+
+   this.CUSTOMERDATAMODULE1 = new CUSTOMERDATAMODULE()
+   this.CUSTOMERDATAMODULE1.parent = this
+   with (this.CUSTOMERDATAMODULE1)
+      left = 9.0
+      top = 267.0
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Customer Information"
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.customerdatamodule1.customer1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
+         dataLink = form.customerdatamodule1.customer1.rowset.fields["last name"]
+         editorType = 1	// EntryField
+         width = 172.0
+      endwith
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
+         dataLink = form.customerdatamodule1.customer1.rowset.fields["first name"]
+         editorType = 1	// EntryField
+         width = 147.0
+      endwith
+      columns["COLUMN3"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN3"])
+         dataLink = form.customerdatamodule1.customer1.rowset.fields["city"]
+         editorType = 1	// EntryField
+         width = 200.0
+      endwith
+      with (columns["COLUMN1"].headingControl)
+         value = "Last Name"
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "First Name"
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "City"
+      endwith
+
+      height = 260.0
+      left = 3.0
+      top = 38.0
+      width = 565.0
+   endwith
+
+   with (this.MYTOOLBAR1)
+      left = 99.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 16.0
+      left = 32.0
+      top = 75.0
+      width = 73.0
+      text = "Name:"
+   endwith
+
+   this.FIRSTNAMEEF = new MYENTRYFIELD(this)
+   with (this.FIRSTNAMEEF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["first name"]
+      height = 22.0
+      left = 109.0
+      top = 72.0
+      width = 168.0
+   endwith
+
+   this.LASTNAMEEF = new MYENTRYFIELD(this)
+   with (this.LASTNAMEEF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["last name"]
+      height = 22.0
+      left = 284.0
+      top = 72.0
+      width = 176.0
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 18.0
+      top = 99.0
+      width = 87.0
+      text = "Address:"
+   endwith
+
+   this.STREET1EF = new MYENTRYFIELD(this)
+   with (this.STREET1EF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["street1"]
+      height = 22.0
+      left = 109.0
+      top = 97.0
+      width = 179.0
+   endwith
+
+   this.STREET2EF = new MYENTRYFIELD(this)
+   with (this.STREET2EF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["street2"]
+      height = 22.0
+      left = 109.0
+      top = 121.0
+      width = 179.0
+   endwith
+
+   this.CITYEF = new MYENTRYFIELD(this)
+   with (this.CITYEF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["city"]
+      height = 22.0
+      left = 109.0
+      top = 145.0
+      width = 118.0
+   endwith
+
+   this.STATECB = new MYCOMBOBOX(this)
+   with (this.STATECB)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["state id"]
+      height = 22.0
+      left = 232.0
+      top = 145.0
+      width = 123.0
+   endwith
+
+   this.POSTALEF = new MYENTRYFIELD(this)
+   with (this.POSTALEF)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["postal"]
+      height = 22.0
+      left = 358.0
+      top = 145.0
+      width = 65.0
+   endwith
+
+   this.COUNTRYCB = new MYCOMBOBOX(this)
+   with (this.COUNTRYCB)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["country id"]
+      height = 22.0
+      left = 427.0
+      top = 145.0
+      width = 117.0
+   endwith
+
+   this.MYTEXTLABEL4 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL4)
+      height = 17.0
+      left = 18.0
+      top = 170.0
+      width = 87.0
+      text = "Phone:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["phone"]
+      height = 22.0
+      left = 109.0
+      top = 170.0
+      width = 124.0
+   endwith
+
+   this.MYTEXTLABEL5 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL5)
+      height = 22.0
+      left = 18.0
+      top = 195.0
+      width = 87.0
+      text = "Comments:"
+   endwith
+
+   this.COMMENTED = new MYEDITOR(this)
+   with (this.COMMENTED)
+      height = 99.0
+      left = 109.0
+      top = 195.0
+      width = 439.0
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["comments"]
+   endwith
+
+   this.rowset = this.customerdatamodule1.customer1.rowset
+
+endclass
+

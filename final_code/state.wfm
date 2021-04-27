@@ -1,0 +1,139 @@
+/*
+   ----------------------------------------------------------------------------
+   state.wfm
+   A form to interact with the lookup table "state", written for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/11/2017
+//
+parameter bModal
+local f
+f = new stateForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class stateForm of DataFormCForm from :DT_Custom:DataForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to :FormControls:seeker.cc additive
+   with (this)
+      height = 169.0
+      left = 400.0
+      top = 196.0
+      width = 393.0
+      text = "States"
+   endwith
+
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 317.0
+      top = 83.0
+      databaseName = "DBASETUTORIAL"
+      active = true
+   endwith
+
+   this.STATE1 = new QUERY(this)
+   with (this.STATE1)
+      left = 340.0
+      top = 68.0
+      database = form.dbasetutorial1
+      sql = "select * from STATE.DBF"
+      active = true
+   endwith
+
+   with (this.STATE1.rowset)
+      indexName = "STATE"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "States"
+   endwith
+
+   with (this.SEEKER1)
+      width = 332.0
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.state1.rowset
+      columns["Column1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column1"])
+         dataLink = form.state1.rowset.fields["state id"]
+         editorType = 1	// EntryField
+         width = 80.0
+      endwith
+      columns["Column2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column2"])
+         dataLink = form.state1.rowset.fields["state"]
+         editorType = 1	// EntryField
+         width = 252.0
+      endwith
+      with (columns["Column1"].headingControl)
+         value = "State ID"
+      endwith
+
+      with (columns["Column2"].headingControl)
+         value = "State"
+      endwith
+
+      height = 103.0
+      left = 8.0
+      top = 37.0
+      width = 377.0
+   endwith
+
+   with (this.MYTOOLBAR1)
+      left = 4.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 76.0
+      top = 75.0
+      width = 60.0
+      text = "State ID:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.state1.rowset.fields["state id"]
+      height = 22.0
+      left = 144.0
+      top = 71.0
+      width = 43.0
+      picture = "!!"
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 93.0
+      top = 96.0
+      width = 43.0
+      text = "State:"
+   endwith
+
+   this.MYENTRYFIELD2 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD2)
+      dataLink = form.state1.rowset.fields["state"]
+      height = 22.0
+      left = 144.0
+      top = 96.0
+      width = 200.0
+   endwith
+
+   this.rowset = this.state1.rowset
+
+endclass
+

@@ -1,0 +1,278 @@
+dBASE PLUS Project Explorer Log: tutorial.log
+Project name: dBASE Tutorial
+
+=================================================================
+REBUILD ALL process started: 01/19/2017 07:55:15
+dBASE PLUS 11.1  b2536 (01/16/2017-EN170116)
+Project Explorer b1064 (02/09/2016)
+-----------------------------------------------------------------
+Compile results for:
+C:\DBASETUTORIAL\TUTORIAL.PRG
+0 warnings, 0 errors
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\BASE.CFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\base.cfo copied to DEO Target: C:\dBASETutorial\deploy\custom\base.cfo
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\DATAFORM.CFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\DataForm.cfo copied to DEO Target: C:\dBASETutorial\deploy\custom\DataForm.cfo
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\DIALOGFORM.CFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\DialogForm.cfo copied to DEO Target: C:\dBASETutorial\deploy\custom\DialogForm.cfo
+
+Compile results for:
+C:\DBASETUTORIAL\ABOUT.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\about.wfo copied to DEO Target: C:\dBASETutorial\deploy\about.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\COUNTRY.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\country.wfo copied to DEO Target: C:\dBASETutorial\deploy\country.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOMER.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\customer.wfo copied to DEO Target: C:\dBASETutorial\deploy\customer.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\GETDATES.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\GetDates.wfo copied to DEO Target: C:\dBASETutorial\deploy\GetDates.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\INVENTORY.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\inventory.wfo copied to DEO Target: C:\dBASETutorial\deploy\inventory.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\INVOICE.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\invoice.wfo copied to DEO Target: C:\dBASETutorial\deploy\invoice.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\INVOICEEDIT.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\InvoiceEdit.wfo copied to DEO Target: C:\dBASETutorial\deploy\InvoiceEdit.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\LINEITEMEDIT.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\LineItemEdit.wfo copied to DEO Target: C:\dBASETutorial\deploy\LineItemEdit.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\PREVIEW.WFM
+parameter bModal
+Warning in line 417: Command will never be reached.
+local f
+Warning in line 418: Command will never be reached.
+f = new previewForm()
+Warning in line 419: Command will never be reached.
+if (bModal)
+Warning in line 420: Command will never be reached.
+   f.mdi = false 
+Warning in line 421: Command will never be reached.
+   f.readModal()
+Warning in line 422: Command will never be reached.
+else
+Warning in line 423: Command will never be reached.
+   f.open()
+Warning in line 424: Command will never be reached.
+endif
+Warning in line 425: Command will never be reached.
+9 warnings, 0 errors
+
+C:\dBASETutorial\preview.wfo copied to DEO Target: C:\dBASETutorial\deploy\preview.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\STATE.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\state.wfo copied to DEO Target: C:\dBASETutorial\deploy\state.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\SUPPLIER.WFM
+0 warnings, 0 errors
+
+C:\dBASETutorial\supplier.wfo copied to DEO Target: C:\dBASETutorial\deploy\supplier.wfo
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\BASE.CRP
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\base.cro copied to DEO Target: C:\dBASETutorial\deploy\custom\base.cro
+
+Compile results for:
+C:\DBASETUTORIAL\INVENTORY.REP
+0 warnings, 0 errors
+
+C:\dBASETutorial\inventory.reo copied to DEO Target: C:\dBASETutorial\deploy\inventory.reo
+
+Compile results for:
+C:\DBASETUTORIAL\INVOICE.REP
+0 warnings, 0 errors
+
+C:\dBASETutorial\invoice.reo copied to DEO Target: C:\dBASETutorial\deploy\invoice.reo
+
+Compile results for:
+C:\DBASETUTORIAL\STATEMENTS.REP
+0 warnings, 0 errors
+
+C:\dBASETutorial\statements.reo copied to DEO Target: C:\dBASETutorial\deploy\statements.reo
+
+Compile results for:
+C:\DBASETUTORIAL\SUPPLIERS.REP
+0 warnings, 0 errors
+
+C:\dBASETutorial\suppliers.reo copied to DEO Target: C:\dBASETutorial\deploy\suppliers.reo
+
+Compile results for:
+C:\DBASETUTORIAL\TUTORIAL.MNU
+0 warnings, 0 errors
+
+C:\dBASETutorial\tutorial.mno copied to DEO Target: C:\dBASETutorial\deploy\tutorial.mno
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOMER.LAB
+0 warnings, 0 errors
+
+C:\dBASETutorial\customer.lao copied to DEO Target: C:\dBASETutorial\deploy\customer.lao
+
+Compile results for:
+C:\DBASETUTORIAL\SETUP.PRG
+0 warnings, 0 errors
+
+C:\dBASETutorial\setup.pro copied to DEO Target: C:\dBASETutorial\deploy\setup.pro
+
+Compile results for:
+C:\DBASETUTORIAL\START.PRG
+0 warnings, 0 errors
+
+C:\dBASETutorial\start.pro copied to DEO Target: C:\dBASETutorial\deploy\start.pro
+
+C:\dBASETutorial\statements.sql copied to DEO Target: C:\dBASETutorial\deploy\statements.sql
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\BASE.CDM
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\base.cdo copied to DEO Target: C:\dBASETutorial\deploy\custom\base.cdo
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOMER.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\customer.dmo copied to DEO Target: C:\dBASETutorial\deploy\customer.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\INVENTORY.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\inventory.dmo copied to DEO Target: C:\dBASETutorial\deploy\inventory.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\INVENTORYREP.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\InventoryRep.dmo copied to DEO Target: C:\dBASETutorial\deploy\InventoryRep.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\INVOICE.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\invoice.dmo copied to DEO Target: C:\dBASETutorial\deploy\invoice.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\INVOICEREP.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\InvoiceRep.dmo copied to DEO Target: C:\dBASETutorial\deploy\InvoiceRep.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\STATEMENTS.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\statements.dmo copied to DEO Target: C:\dBASETutorial\deploy\statements.dmo
+
+Compile results for:
+C:\DBASETUTORIAL\SUPPLIER.DMD
+0 warnings, 0 errors
+
+C:\dBASETutorial\supplier.dmo copied to DEO Target: C:\dBASETutorial\deploy\supplier.dmo
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_left_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\arrow_left_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_right_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\arrow_right_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\delete_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\delete_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\document_open_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\document_open_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\favourites_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\favourites_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\save_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\save_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\stop_16.png copied to DEO Target: C:\dBASETutorial\deploy\images\stop_16.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\delete_24.png copied to DEO Target: C:\dBASETutorial\deploy\images\delete_24.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\document_open_24.png copied to DEO Target: C:\dBASETutorial\deploy\images\document_open_24.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\favourites_24.png copied to DEO Target: C:\dBASETutorial\deploy\images\favourites_24.png
+
+C:\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\print_24.png copied to DEO Target: C:\dBASETutorial\deploy\images\print_24.png
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\CUSTOMREPORTCONTROLS.CC
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\CustomReportControls.co copied to DEO Target: C:\dBASETutorial\deploy\custom\CustomReportControls.co
+
+Compile results for:
+C:\DBASETUTORIAL\CUSTOM\MYCONTROLS.CC
+0 warnings, 0 errors
+
+C:\dBASETutorial\custom\MyControls.co copied to DEO Target: C:\dBASETutorial\deploy\custom\MyControls.co
+
+Compile results for:
+C:\DBASETUTORIAL\GENERICMDIAPP.CC
+0 warnings, 0 errors
+
+C:\dBASETutorial\GenericMDIApp.co copied to DEO Target: C:\dBASETutorial\deploy\GenericMDIApp.co
+
+Compile results for:
+C:\USERS\KEN_000\DOCUMENTS\DBASE\PLUS11\DBLCLASSES\FORMCONTROLS\SEEKER.CC
+0 warnings, 0 errors
+
+C:\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\FormControls\SEEKER.Co copied to DEO Target: C:\dBASETutorial\deploy\custom\SEEKER.Co
+
+Compile results for:
+C:\USERS\KEN_000\DOCUMENTS\DBASE\PLUS11\DBLCLASSES\REPORTCONTROLS\REPORT.CC
+0 warnings, 0 errors
+
+C:\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\ReportControls\REPORT.Co copied to DEO Target: C:\dBASETutorial\deploy\custom\REPORT.Co
+
+Process completed at: 07:55:21 (6 seconds elapsed)
+File compiles attempted: 37
+File compile errors: 0
+DEO files copied: 48
+Executable file: C:\dBASETutorial\deploy\tutorial.exe
+Executable file size: 1,006,578
+C:\dBASETutorial\deploy\tutorial.ini created or updated.
+

@@ -1,0 +1,138 @@
+/*
+   ----------------------------------------------------------------------------
+   country.wfm
+   A form to interact with the country data for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/11/2017
+//
+parameter bModal
+local f
+f = new countryForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class countryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to :FormControls:seeker.cc additive
+   with (this)
+      height = 180.0
+      left = 415.0
+      top = 213.0
+      width = 388.0
+      text = "Countries"
+   endwith
+
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 308.0
+      top = 98.0
+      databaseName = "DBASETUTORIAL"
+      active = true
+   endwith
+
+   this.COUNTRY1 = new QUERY(this)
+   with (this.COUNTRY1)
+      left = 333.0
+      top = 76.0
+      database = form.dbasetutorial1
+      sql = "select * from COUNTRY.DBF"
+      active = true
+   endwith
+
+   with (this.COUNTRY1.rowset)
+      indexName = "COUNTRY"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Countries"
+   endwith
+
+   with (this.SEEKER1)
+      width = 331.0
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.country1.rowset
+      columns["Column1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column1"])
+         dataLink = form.country1.rowset.fields["country id"]
+         editorType = 1	// EntryField
+         width = 100.0
+      endwith
+      columns["Column2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column2"])
+         dataLink = form.country1.rowset.fields["country"]
+         editorType = 1	// EntryField
+         width = 200.0
+      endwith
+      with (columns["Column1"].headingControl)
+         value = "Country ID"
+      endwith
+
+      with (columns["Column2"].headingControl)
+         value = "Country"
+      endwith
+
+      height = 114.0
+      left = 21.0
+      width = 344.0
+   endwith
+
+   with (this.MYTOOLBAR1)
+      left = 4.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 98.0
+      top = 71.0
+      width = 87.0
+      text = "Country ID:"
+   endwith
+
+   this.COUNTRYIDEF = new MYENTRYFIELD(this)
+   with (this.COUNTRYIDEF)
+      dataLink = form.country1.rowset.fields["country id"]
+      height = 22.0
+      left = 190.0
+      top = 70.0
+      width = 40.0
+      picture = "!!"
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 98.0
+      top = 102.0
+      width = 87.0
+      text = "Country:"
+   endwith
+
+   this.COUNTRYEF = new MYENTRYFIELD(this)
+   with (this.COUNTRYEF)
+      dataLink = form.country1.rowset.fields["country"]
+      height = 22.0
+      left = 190.0
+      top = 98.0
+      width = 124.0
+   endwith
+
+   this.rowset = this.country1.rowset
+
+endclass
+

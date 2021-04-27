@@ -1,0 +1,347 @@
+/*
+   ----------------------------------------------------------------------------
+   statements.rep
+   A report that generates the statements of account for all customers
+   within a date range, called from GetDates.wfm, written for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/12/2017
+//
+local r
+r = new STATEMENTSREPORT()
+r.render()
+
+class STATEMENTSREPORT of BASECREPORT from :DT_Custom:base.crp
+   set procedure to :DT_Custom:CustomReportControls.cc additive
+   set procedure to :ReportControls:report.cc additive
+   set procedure to statements.dmd additive
+   with (this)
+      title = "Statement of Account"
+   endwith
+
+   this.STATEMENTSDATAMODULE1 = new STATEMENTSDATAMODULE()
+   this.STATEMENTSDATAMODULE1.parent = this
+   with (this.STATEMENTSDATAMODULE1)
+      left = 0.0
+      top = 0.0
+   endwith
+
+   form.STREAMFRAME1 = form.pagetemplate1.streamframe1
+
+   with (this.PAGETEMPLATE1.MYREPORTTITLETEXT1)
+      text = "Statement of Account"
+      form.MYREPORTTITLETEXT1 = form.pagetemplate1.myreporttitletext1
+   endwith
+
+   form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
+
+   form.PAGENUMBER1 = form.pagetemplate1.pagenumber1
+
+   with (this.printer)
+      duplex = 1	// None
+      orientation = 1	// Portrait
+      paperSource = 7
+      paperSize = 1
+      resolution = 0	// Default
+      color = 1	// Monochrome
+      trueTypeFonts = 0	// Default
+   endwith
+
+   this.STREAMSOURCE1.GROUP1 = new GROUP(this.STREAMSOURCE1)
+   with (this.STREAMSOURCE1.GROUP1)
+      groupBy = "Customer ID"
+   endwith
+
+   with (this.STREAMSOURCE1.GROUP1.footerBand)
+      onRender = class::FOOTERBAND_ONRENDER
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT1)
+      height = 0.18
+      left = 5.2917
+      top = 0.0938
+      width = 1.1771
+      fontBold = true
+      text = "Statement Total:"
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYLINE1 = new MYLINE(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYLINE1)
+      left = 3.5521
+      right = 7.25
+      top = 0.0521
+      bottom = 0.0521
+      width = 0
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 6.5625
+      top = 0.0938
+      width = 0.5729
+      alignHorizontal = 2	// Right
+      picture = "999.99"
+      fontBold = true
+      text = {||this.parent.parent.agSum({||this.parent.rowset.fields["Item Price"].value})}
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT2 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT2)
+      height = 0.2083
+      left = 2.4375
+      top = 0.75
+      width = 2.625
+      alignHorizontal = 1	// Center
+      fontBold = true
+      text = "Thank You for shopping with us."
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYRECTANGLESHAPE1 = new MYRECTANGLESHAPE(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYRECTANGLESHAPE1)
+      left = 0.2604
+      top = 0.4055
+      width = 6.9687
+      height = 0.85
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT1)
+      canRender = class::MYFIELDTEXT1_CANRENDER
+      height = 0.2083
+      left = 0.3854
+      top = 0.4055
+      width = 3.0104
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT2 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT2)
+      canRender = class::MYFIELDTEXT2_CANRENDER
+      height = 0.2083
+      left = 0.3958
+      top = 0.593
+      width = 3.5625
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT3 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT3)
+      canRender = class::MYFIELDTEXT3_CANRENDER
+      height = 0.2083
+      left = 1.8438
+      top = 0.0722
+      width = 1.125
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT4 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT4)
+      canRender = class::MYFIELDTEXT4_CANRENDER
+      height = 0.2083
+      left = 3.9583
+      top = 0.0618
+      width = 1.3646
+   endwith
+
+   this.STREAMSOURCE1.GROUP2 = new GROUP(this.STREAMSOURCE1)
+   with (this.STREAMSOURCE1.GROUP2)
+      groupBy = "Order Date"
+   endwith
+
+   with (this.STREAMSOURCE1.GROUP2.headerBand)
+      height = 1.05
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYRECTANGLESHAPE1 = new MYRECTANGLESHAPE(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYRECTANGLESHAPE1)
+      left = 2.5313
+      top = 0.0826
+      width = 4.7083
+      height = 0.5104
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT1)
+      height = 0.2083
+      left = 2.625
+      top = 0.1556
+      width = 0.9896
+      fontBold = true
+      text = "Date of Order: "
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 2.8333
+      top = 0.3639
+      width = 0.875
+      text = {||form.streamsource1.rowset.fields["Order Date"].value}
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT2 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT2)
+      height = 0.1771
+      left = 3.4583
+      top = 0.7389
+      width = 0.5625
+      fontBold = true
+      text = "Item ID "
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT3 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT3)
+      height = 0.2083
+      left = 4.1771
+      top = 0.7389
+      width = 1.2292
+      alignHorizontal = 0	// Left
+      fontBold = true
+      text = "Type of Mug"
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT4 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT4)
+      height = 0.1771
+      left = 5.5625
+      top = 0.74
+      width = 0.7708
+      fontBold = true
+      text = "Quantity "
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT5 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYFIELDHEADINGTEXT5)
+      height = 0.18
+      left = 6.4688
+      top = 0.74
+      width = 0.7708
+      fontBold = true
+      text = "Ext. Price"
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYLINE1 = new MYLINE(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYLINE1)
+      left = 3.5521
+      right = 7.25
+      top = 0.6667
+      bottom = 0.6667
+      width = 0
+   endwith
+
+   this.STREAMSOURCE1.GROUP2.headerBand.MYLINE2 = new MYLINE(this.STREAMSOURCE1.GROUP2.headerBand)
+   with (this.STREAMSOURCE1.GROUP2.headerBand.MYLINE2)
+      left = 3.5521
+      right = 7.25
+      top = 0.9583
+      bottom = 0.9583
+      width = 0
+   endwith
+
+   with (this.STREAMSOURCE1.detailBand)
+      height = 0.0
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 3.5729
+      top = 0.0
+      width = 0.4792
+      alignHorizontal = 2	// Right
+      text = {||form.streamsource1.rowset.fields["Item ID2"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT2 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT2)
+      height = 0.2083
+      left = 4.1667
+      top = 0.0
+      width = 1.7188
+      text = {||form.streamsource1.rowset.fields["Item ID"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT3 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT3)
+      height = 0.2083
+      left = 5.9167
+      top = 0.0
+      width = 0.4375
+      alignHorizontal = 2	// Right
+      picture = "999"
+      text = {||form.streamsource1.rowset.fields["Qty"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT4 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT4)
+      height = 0.2083
+      left = 6.4271
+      top = 0.0
+      width = 0.7083
+      alignHorizontal = 2	// Right
+      picture = "999.99"
+      text = {||form.streamsource1.rowset.fields["Item Price"].value}
+   endwith
+
+   this.firstPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.nextPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.streamframe1.streamSource = this.form.streamsource1
+   this.form.streamsource1.rowset = this.form.statementsdatamodule1.statements1.rowset
+
+   function FOOTERBAND_onRender()
+      if this.parent.parent.rowset.atLast() = false
+         this.parent.parent.beginNewFrame()
+      endif
+   return
+
+   function MYFIELDTEXT1_canRender()
+      local f
+      f = form.statementsDataModule1.statements1.rowset.fields
+      this.text := new string( trim( f["first name"].value ) )
+      this.text += " "
+      this.text += new string( f["last name"].value )
+   return true
+
+   function MYFIELDTEXT2_canRender()
+      // This one's going to be a bit more complicated,
+      // but it will solve some issues in getting
+      // everything to "lay out" properly:
+      local f
+      f = form.statementsDataModule1.statements1.rowset.fields
+      this.text := new string( f["street1"].value )
+      if not empty( f["street2"].value )
+         this.text += "<br /> " + new string( f["street2"].value )
+      endif
+      if not empty( f["city"].value )
+         this.text += "<br /> " + ;
+                      new string( trim( f["city"].value ) ) + ", " +;
+                      f["state id"].value.rightTrim()  + "  " + ;
+                      new string( f["postal"].value )
+         if not f["country id"].value.rightTrim() == "United States" 
+            this.text := this.text.rightTrim()
+            this.text += "   <b>"+f["country id"].value+"</b>"
+         endif
+      endif      
+   return true
+
+   function MYFIELDTEXT3_canRender()
+      if type("_app.start") # "U"
+         this.text = "From: " + _app.start
+      endif
+   return true
+
+   function MYFIELDTEXT4_canRender()
+      if type("_app.stop") # "U"
+         this.text = "To: " + _app.stop
+      endif
+   return true
+
+endclass
+

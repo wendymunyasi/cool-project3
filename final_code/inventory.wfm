@@ -1,0 +1,167 @@
+/*
+   ----------------------------------------------------------------------------
+   inventory.wfm.wfm
+   A form to interact with the inventory table for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/10/2017
+//
+parameter bModal
+local f
+f = new inventoryForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class inventoryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
+   set procedure to inventory.dmd additive
+   set procedure to :FormControls:seeker.cc additive
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      left = 96.0
+      top = 40.0
+      text = "Inventory"
+   endwith
+
+   this.INVENTORYDATAMODULE1 = new INVENTORYDATAMODULE()
+   this.INVENTORYDATAMODULE1.parent = this
+   with (this.INVENTORYDATAMODULE1)
+      left = 4.0
+      top = 282.0
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Inventory"
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.inventorydatamodule1.inventory1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["description"]
+         editorType = 1	// EntryField
+         width = 153.0
+      endwith
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["qty"]
+         editorType = 3	// SpinBox
+         width = 74.0
+      endwith
+      columns["COLUMN3"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN3"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["supplier id"]
+         editorType = 4	// ComboBox
+         width = 224.0
+      endwith
+      with (columns["COLUMN1"].headingControl)
+         value = "Description"
+      endwith
+
+      with (columns["COLUMN2"].editorControl)
+         rangeMax = 100
+         rangeMin = 1
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "Qty"
+      endwith
+
+      with (columns["COLUMN3"].editorControl)
+         style = 1	// DropDownList
+         dropDownHeight = 132.0
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "Company"
+      endwith
+
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 70.0
+      top = 74.0
+      width = 87.0
+      text = "Description:"
+   endwith
+
+   this.DESCRIPTIONEF = new MYENTRYFIELD(this)
+   with (this.DESCRIPTIONEF)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["description"]
+      height = 22.0
+      left = 161.0
+      top = 72.0
+      width = 238.0
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 37.0
+      top = 100.0
+      width = 120.0
+      text = "Quantity On Hand:"
+   endwith
+
+   this.QOHSPIN = new MYSPINBOX(this)
+   with (this.QOHSPIN)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["qty"]
+      height = 22.0
+      left = 161.0
+      top = 97.0
+      width = 65.0
+   endwith
+
+   this.MYTEXTLABEL4 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL4)
+      height = 22.0
+      left = 70.0
+      top = 127.0
+      width = 87.0
+      text = "Supplier:"
+   endwith
+
+   this.SUPPLIERCB = new MYCOMBOBOX(this)
+   with (this.SUPPLIERCB)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["supplier id"]
+      height = 26.0
+      left = 161.0
+      top = 122.0
+      width = 200.0
+   endwith
+
+   this.MYTEXTLABEL5 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL5)
+      height = 22.0
+      left = 70.0
+      top = 156.0
+      width = 87.0
+      text = "Picture:"
+   endwith
+
+   this.MYIMAGE1 = new MYIMAGE(this)
+   with (this.MYIMAGE1)
+      height = 157.0
+      left = 161.0
+      top = 155.0
+      width = 166.0
+      dataSource = form.inventorydatamodule1.inventory1.rowset.fields["picture"]
+   endwith
+
+   this.rowset = this.inventorydatamodule1.inventory1.rowset
+
+endclass
+

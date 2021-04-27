@@ -1,0 +1,8 @@
+
+FILES
+   C:\dBASETutorial\tutorial.prO
+TO C:\dBASETutorial\deploy\tutorial.exe
+ICON C:\dBASETutorial\Mugs.ico
+SPLASH C:\dBASETutorial\tutoriallogo.bmp
+WEBAPPLICATION False
+UAC ON

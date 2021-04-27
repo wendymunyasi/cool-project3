@@ -1,0 +1,118 @@
+/*
+   ----------------------------------------------------------------------------
+   GetDates.wfm
+   A form to get the date range for the statements report, for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/12/2017
+//
+parameter bModal
+local f
+f = new GetDatesForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class GetDatesForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      height = 126.0
+      left = 522.0
+      top = 255.0
+      width = 371.0
+      text = "Desired Date Range"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Desired Date Range"
+   endwith
+
+   with (this.PBSAVE)
+      onClick = class::PBSAVE_ONCLICK
+      left = 69.0
+      top = 86.0
+   endwith
+
+   with (this.PBCANCEL)
+      onClick = class::PBCANCEL_ONCLICK
+      left = 187.0
+      top = 86.0
+   endwith
+
+   this.STARTDATESB = new MYSPINBOX(this)
+   with (this.STARTDATESB)
+      height = 22.0
+      left = 61.0
+      top = 40.0
+      width = 99.0
+      picture = ""
+      value = {  /  /    }
+   endwith
+
+   this.ENDDATESB = new MYSPINBOX(this)
+   with (this.ENDDATESB)
+      height = 22.0
+      left = 194.0
+      top = 39.0
+      width = 99.0
+      picture = ""
+      value = {  /  /    }
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 22.0
+      left = 71.0
+      top = 65.0
+      width = 72.0
+      text = "Start Date"
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 208.0
+      top = 65.0
+      width = 63.0
+      text = "End Date"
+   endwith
+
+
+   function PBCANCEL_onClick()
+      // override method in super class
+      _app.Start = {}
+      _app.Stop  = {}
+      form.close()
+   return
+
+   function PBSAVE_onClick()
+      //  store dates to app variables
+      _app.Start = form.StartDateSB.value
+      _app.Stop  = form.EndDateSB.value
+         
+      // call report
+      set procedure to preview.wfm additive
+      set procedure to statements.rep additive
+      fPreview = new PreviewForm()
+      // to open with ReadModal()
+      fPreview.bModal = true 
+      fPreview.viewer.fileName := "statements.rep" 
+      fPreview.Open()
+      
+      // cleanup
+      form.close()      
+   return
+
+endclass
+

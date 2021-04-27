@@ -1,0 +1,167 @@
+/*
+   ----------------------------------------------------------------------------
+   lineItemEdit.wfm
+   A form designed to allow editing/adding/etc of line items for
+   an invoice, called from invoice.wfm, written for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/11/2017
+//
+parameter bModal
+local f
+f = new LineItemEditForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      onOpen = class::FORM_ONOPEN
+      height = 164.0
+      left = 413.0
+      top = 99.0
+      width = 386.0
+      text = "Line Items"
+   endwith
+
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 297.0
+      top = 119.0
+      databaseName = "DBASETUTORIAL"
+      active = true
+   endwith
+
+   this.LINEITEM1 = new QUERY(this)
+   with (this.LINEITEM1)
+      left = 307.0
+      top = 88.0
+      database = form.dbasetutorial1
+      sql = "select * from LINEITEM.DBF"
+      active = true
+   endwith
+
+   with (this.LINEITEM1.rowset)
+      canNavigate = {; return false}
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', description from inventory"
+      endwith
+      indexName = "INVOICE ID"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Line Items"
+   endwith
+
+   with (this.PBSAVE)
+      left = 68.0
+      top = 120.0
+   endwith
+
+   with (this.PBCANCEL)
+      left = 186.0
+      top = 120.0
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 22.0
+      left = 72.0
+      top = 39.0
+      width = 57.0
+      text = "Invoice:"
+   endwith
+
+   this.MYDISABLEDENTRYFIELD1 = new MYDISABLEDENTRYFIELD(this)
+   with (this.MYDISABLEDENTRYFIELD1)
+      dataLink = form.lineitem1.rowset.fields["invoice id"]
+      height = 22.0
+      left = 132.0
+      top = 37.0
+      width = 61.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 42.0
+      top = 64.0
+      width = 87.0
+      text = "Item:"
+   endwith
+
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.lineitem1.rowset.fields["item id"]
+      height = 22.0
+      left = 132.0
+      top = 61.0
+      width = 235.0
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 13.0
+      top = 87.0
+      width = 116.0
+      text = "Quantity Ordered:"
+   endwith
+
+   this.MYSPINBOX1 = new MYSPINBOX(this)
+   with (this.MYSPINBOX1)
+      dataLink = form.lineitem1.rowset.fields["qty"]
+      height = 22.0
+      left = 132.0
+      top = 85.0
+      width = 53.0
+      picture = "999"
+   endwith
+
+   this.rowset = this.lineitem1.rowset
+
+   function form_onOpen()
+      // This code will be used to see if
+      // the form is being opened properly at all (in the
+      // first place -- it's supposed to be called
+      // from "Invoice.wfm"), and if so, if we are
+      // supposed to be in append or beginEdit
+      // mode ...
+      if type( "form.Mode" ) == "C" // character
+         if form.mode == "Append"
+            form.rowset.beginAppend()
+            // assign defaults
+            form.rowset.fields["Invoice ID"].value := form.InvoiceID
+            form.rowset.fields["Qty"].value := 1
+            form.rowset.refreshControls()
+         else
+            // find current row
+            form.rowset.canNavigate := {|| true }
+            form.rowset.indexName   := "InvoiceItem"
+            form.rowset.findKey( str( form.InvoiceID, 7 )+;
+                                 str( form.ItemId, 7 ) )
+            form.rowset.canNavigate := {|| false }
+            // start editing:
+            form.rowset.beginEdit()
+         endif
+      else
+         form.rowset.first() // just so we're at the top
+         msgbox( "You shouldn't run this form except from invoice.wfm",;
+                 "Don't do that!", 16 )
+      endif 
+   return
+
+endclass
+

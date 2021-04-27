@@ -1,0 +1,100 @@
+/*
+   ----------------------------------------------------------------------------
+   about.wfm
+   A simple "about this application" form for
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/19/2017
+//
+parameter bModal
+local f
+f = new aboutForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class aboutForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      onOpen = class::FORM_ONOPEN
+      height = 187.0
+      left = 272.0
+      top = 226.0
+      width = 371.0
+      text = "About Tutorial"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "About Tutorial"
+   endwith
+
+   with (this.PBSAVE)
+      visible = false
+      left = 74.0
+      top = 202.0
+   endwith
+
+   with (this.PBCANCEL)
+      visible = false
+      left = 192.0
+      top = 202.0
+   endwith
+
+   this.MYTEXT1 = new MYTEXT(this)
+   with (this.MYTEXT1)
+      height = 87.0
+      left = 2.0
+      top = 33.0
+      width = 362.0
+      text = "This is a tutorial project for dBASE PLUS. The application was created by Ken Mayer and updated for dBASE PLUS by Michael Nuwer through 2002 (and then updated again by Ken Mayer for more recent versions of dBASE -- January, 2017). Enjoy!"
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 20.0
+      left = 10.0
+      top = 127.0
+      width = 343.0
+      text = "dBASE Version: xxxxxxxxxxx"
+      fontBold = false
+      alignHorizontal = 1	// Center
+   endwith
+
+   this.OKBTN = new MYPUSHBUTTON(this)
+   with (this.OKBTN)
+      onClick = {;form.close()}
+      height = 24.0
+      left = 129.0
+      top = 152.0
+      width = 107.0
+      text = "&OK"
+      speedTip = "Close this form"
+   endwith
+
+
+   function form_onOpen()
+      // get the current version information of dBASE/Runtime:
+      local cVersion
+      cVersion = version(1)
+      // remove date and other information
+      cVersion = left( cVersion, at( "(", cVersion ) - 2 )
+      // store in the text label on the form:
+      form.MyTextLabel1.text := "dBASE Version: " + cVersion
+      
+      // take text from application titleBar, and 
+      // place in titleBar of the About form:
+      form.text := _app.framewin.text
+   return
+
+endclass
+

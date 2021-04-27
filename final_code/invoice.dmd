@@ -1,0 +1,62 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 01/09/2017
+//
+class invoiceDATAMODULE of BASECDATAMODULE from ":DT_Custom:base.cdm"
+   with (this.DBASETUTORIAL1)
+      left = 19.0
+      top = 135.0
+   endwith
+
+   this.CUSTOMER1 = new QUERY(this)
+   with (this.CUSTOMER1)
+      left = 126.0
+      top = 28.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "CUSTOMER"'
+      active = true
+   endwith
+
+   with (this.CUSTOMER1.rowset)
+      indexName = "NAMES"
+   endwith
+   
+   this.rowset = this.CUSTOMER1.rowset
+
+   this.INVOICE1 = new QUERY(this)
+   with (this.INVOICE1)
+      left = 325.0
+      top = 46.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "INVOICE"'
+      active = true
+   endwith
+
+   with (this.INVOICE1.rowset)
+      indexName = "CUSTOMER ID"
+      masterRowset = form.customer1.rowset
+      masterFields = "Customer ID"
+   endwith
+
+   this.LINEITEM1 = new QUERY(this)
+   with (this.LINEITEM1)
+      left = 529.0
+      top = 43.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "LINEITEM"'
+      active = true
+   endwith
+
+   with (this.LINEITEM1.rowset)
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', inventory.'description' from inventory"
+      endwith
+      autoEdit = false
+      indexName = "INVOICE ID"
+      masterRowset = form.invoice1.rowset
+      masterFields = "Invoice ID"
+   endwith
+
+
+endclass
+

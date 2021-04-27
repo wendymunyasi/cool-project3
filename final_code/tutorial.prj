@@ -1,0 +1,237 @@
+Project File generated 01/19/2017 07:34:10
+
+[Project]
+Name=dBASE Tutorial
+DefaultDir=.
+MainProjectFileName=tutorial.prg
+Parameters=
+Author=Ken Mayer
+Description=This is the dBASE Application Tutorial project, building a DEO application, updated for dBASE Plus 11, in 2017.
+Preprocessor=
+LogFileName=C:\dBASETutorial\tutorial.log
+PrefPathFormat=R
+TargetFileName=C:\dBASETutorial\deploy\tutorial.exe
+IconFileName=Mugs.ico
+SplashFileName=tutoriallogo.bmp
+MostRecentSelectedFileName=
+WebApplication=false
+DeoOption=True
+enableUAC=1
+inioption=1
+runtimeinbuild=0
+bdeoption=1
+
+[Contents]
+tutorial.prg,0,0,0, 
+custom\base.cfm,1,0,1,1
+custom\DataForm.cfm,1,0,1,1
+custom\DialogForm.cfm,1,0,1,1
+about.wfm,1,0,1,0
+country.wfm,1,0,1,0
+customer.wfm,1,0,1,0
+GetDates.wfm,1,0,1,0
+inventory.wfm,1,0,1,0
+invoice.wfm,1,0,1,0
+InvoiceEdit.wfm,1,0,1,0
+LineItemEdit.wfm,1,0,1,0
+preview.wfm,1,0,1,0
+state.wfm,1,0,1,0
+supplier.wfm,1,0,1,0
+custom\base.crp,1,0,1,1
+inventory.rep,1,0,1,0
+invoice.rep,1,0,1,0
+statements.rep,1,0,1,0
+suppliers.rep,1,0,1,0
+tutorial.mnu,1,0,1,0
+customer.lab,1,0,1,0
+setup.prg,1,0,1,0
+start.prg,1,0,1,0
+tables\COUNTRY.DBF,0,0,0, 
+tables\CUSTOMER.DBF,0,0,0, 
+tables\INVENTORY.DBF,0,0,0, 
+tables\INVOICE.DBF,0,0,0, 
+tables\LINEITEM.DBF,0,0,0, 
+tables\STATE.DBF,0,0,0, 
+tables\SUPPLIER.DBF,0,0,0, 
+statements.sql,0,0,1,0
+custom\base.cdm,1,0,1,1
+customer.dmd,1,0,1,0
+inventory.dmd,1,0,1,0
+InventoryRep.dmd,1,0,1,0
+invoice.dmd,1,0,1,0
+InvoiceRep.dmd,1,0,1,0
+statements.dmd,1,0,1,0
+supplier.dmd,1,0,1,0
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_left_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_right_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\delete_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\document_open_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\favourites_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\save_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\stop_16.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\delete_24.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\document_open_24.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\favourites_24.png,0,0,1,2
+..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\print_24.png,0,0,1,2
+custom\CustomReportControls.cc,1,0,1,1
+custom\MyControls.cc,1,0,1,1
+GenericMDIApp.cc,1,0,1,0
+..\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\FormControls\SEEKER.CC,1,0,1,1
+..\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\ReportControls\REPORT.CC,1,0,1,1
+Mugs.ico,0,0,0, 
+tutoriallogo.bmp,0,0,0, 
+
+[DEO]
+DEO0=C:\dBASETutorial\deploy
+DEO1=C:\dBASETutorial\deploy\custom
+DEO2=C:\dBASETutorial\deploy\images
+
+[INNO]
+ProjectExeFileName=C:\dBASETutorial\deploy\tutorial.exe
+ProjectMainFileName=
+ProjectdBaseVersion=dBASE PLUS 11.1  b2536 (01/16/2017-EN170116)
+DefaultDirName={pf}\{#AppName}
+AppName=dBASE Tutorial
+AppVersion=1.0.0.0
+SM_dBASERuntime=false
+dBPlus=true
+dBSeparat=false
+Resource=false
+dBASELang=EN
+dBaseRuntimeInstDir=
+dBaseRuntimeDir=C:\Program Files (x86)\dBASE\Plus11\Runtime
+INNO_RBoption=3
+bdeonlyinstall=false
+bdeinstallfile=
+XPLook=false
+dBaseBuild=2536
+dBaseVersion=1110
+SetupLang=en
+SepDestDir={app}
+BDEGroupEntries=false
+dBProgressbar=false
+dBProgressbox=false
+dBSilent=false
+dBDestRuntime=
+dBDestBDE=
+SourceFolder=C:\dBASETutorial
+InnoScriptname=
+LastDBVersion=1110
+LastDBLanguage=EN
+LastCreateDate=
+IncDispGroup=true
+IncUninsEntry=true
+IncDesktopEntry=false
+IncQuickEntry=false
+ENLicense=
+ENBefore=
+ENAfter=
+DELicense=
+DEBefore=
+DEAfter=
+ESLicense=
+ESBefore=
+ESAfter=
+ITLicense=
+ITBefore=
+ITAfter=
+JALicense=
+JABefore=
+JAAfter=
+FRLicense=
+FRBefore=
+FRAfter=
+DKLicense=
+DKBefore=
+DKAfter=
+PLLicense=
+PLBefore=
+PLAfter=
+NLLicense=
+NLBefore=
+NLAfter=
+UninsHS=true
+UninsHSAppName=dBASE Tutorial
+UninsHSAppId=
+UninsHSLanguages=All
+BDEUseSettings=false
+BDEMaxFileHandle=255
+BDELangDriver='ascii' ANSI
+BDELevel=7
+BDEMemoBlockSize=1024
+BDEMDXBlockSize=1024
+INNOINI=false
+INIERRORHANDLING=false
+INITRAP=true
+ININOBDE=false
+INIAPPTHEMETYPE=0
+INIFULLTHEMENAME=0 - System
+INILARGEBUTTONS=true
+UACRB=1
+Files1=custom\base.cfO >> DestDir: {app}
+Files2=custom\DataForm.cfO >> DestDir: {app}
+Files3=custom\DialogForm.cfO >> DestDir: {app}
+Files4=about.wfO >> DestDir: {app}
+Files5=country.wfO >> DestDir: {app}
+Files6=customer.wfO >> DestDir: {app}
+Files7=GetDates.wfO >> DestDir: {app}
+Files8=inventory.wfO >> DestDir: {app}
+Files9=invoice.wfO >> DestDir: {app}
+Files10=InvoiceEdit.wfO >> DestDir: {app}
+Files11=LineItemEdit.wfO >> DestDir: {app}
+Files12=preview.wfO >> DestDir: {app}
+Files13=state.wfO >> DestDir: {app}
+Files14=supplier.wfO >> DestDir: {app}
+Files15=custom\base.crO >> DestDir: {app}
+Files16=inventory.reO >> DestDir: {app}
+Files17=invoice.reO >> DestDir: {app}
+Files18=statements.reO >> DestDir: {app}
+Files19=suppliers.reO >> DestDir: {app}
+Files20=tutorial.mnO >> DestDir: {app}
+Files21=customer.laO >> DestDir: {app}
+Files22=setup.prO >> DestDir: {app}
+Files23=start.prO >> DestDir: {app}
+Files24=tables\COUNTRY.DBF >> DestDir: {app}
+Files25=tables\COUNTRY.mdx >> DestDir: {app}
+Files26=tables\CUSTOMER.DBF >> DestDir: {app}
+Files27=tables\CUSTOMER.mdx >> DestDir: {app}
+Files28=tables\CUSTOMER.dbt >> DestDir: {app}
+Files29=tables\INVENTORY.DBF >> DestDir: {app}
+Files30=tables\INVENTORY.mdx >> DestDir: {app}
+Files31=tables\INVENTORY.dbt >> DestDir: {app}
+Files32=tables\INVOICE.DBF >> DestDir: {app}
+Files33=tables\INVOICE.mdx >> DestDir: {app}
+Files34=tables\LINEITEM.DBF >> DestDir: {app}
+Files35=tables\LINEITEM.mdx >> DestDir: {app}
+Files36=tables\STATE.DBF >> DestDir: {app}
+Files37=tables\STATE.mdx >> DestDir: {app}
+Files38=tables\SUPPLIER.DBF >> DestDir: {app}
+Files39=tables\SUPPLIER.mdx >> DestDir: {app}
+Files40=statements.sql >> DestDir: {app}
+Files41=custom\base.cdO >> DestDir: {app}
+Files42=customer.dmO >> DestDir: {app}
+Files43=inventory.dmO >> DestDir: {app}
+Files44=InventoryRep.dmO >> DestDir: {app}
+Files45=invoice.dmO >> DestDir: {app}
+Files46=InvoiceRep.dmO >> DestDir: {app}
+Files47=statements.dmO >> DestDir: {app}
+Files48=supplier.dmO >> DestDir: {app}
+Files49=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_left_16.png >> DestDir: {app}
+Files50=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\arrow_right_16.png >> DestDir: {app}
+Files51=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\delete_16.png >> DestDir: {app}
+Files52=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\document_open_16.png >> DestDir: {app}
+Files53=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\favourites_16.png >> DestDir: {app}
+Files54=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\save_16.png >> DestDir: {app}
+Files55=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\16x16\stop_16.png >> DestDir: {app}
+Files56=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\delete_24.png >> DestDir: {app}
+Files57=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\document_open_24.png >> DestDir: {app}
+Files58=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\favourites_24.png >> DestDir: {app}
+Files59=..\Users\Public\Documents\dBASE\Plus11\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\print_24.png >> DestDir: {app}
+Files60=custom\CustomReportControls.cO >> DestDir: {app}
+Files61=custom\MyControls.cO >> DestDir: {app}
+Files62=GenericMDIApp.cO >> DestDir: {app}
+Files63=..\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\FormControls\SEEKER.CO >> DestDir: {app}
+Files64=..\Users\ken_000\Documents\dBASE\Plus11\dBLClasses\ReportControls\REPORT.CO >> DestDir: {app}
+Files65=Mugs.ico >> DestDir: {app}
+Files66=tutoriallogo.bmp >> DestDir: {app}
+Files67=C:\dBASETutorial\deploy\tutorial.exe >> DestDir: {app}

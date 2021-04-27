@@ -1,0 +1,188 @@
+/*
+   ----------------------------------------------------------------------------
+   inventory.rep
+   An inventory report, written for:
+   
+   The dBASE Plus Tutorial: Developing An Application
+   January, 2017, Ken Mayer
+   
+   Permission is granted to use this in your own applications, with the caveat
+   that credit be given appropriately.
+   ----------------------------------------------------------------------------
+*/
+** END HEADER -- do not remove this line
+//
+// Generated on 01/12/2017
+//
+local r
+r = new INVENTORYREPORT()
+r.render()
+
+class INVENTORYREPORT of baseCReport from :DT_Custom:base.crp
+   set procedure to InventoryRep.dmd additive
+   set procedure to :DT_Custom:CustomReportControls.cc additive
+   set procedure to :ReportControls:report.cc additive
+   with (this)
+      title = "Inventory by Supplier"
+   endwith
+
+   this.INVENTORYREPDATAMODULE1 = new INVENTORYREPDATAMODULE()
+   this.INVENTORYREPDATAMODULE1.parent = this
+   with (this.INVENTORYREPDATAMODULE1)
+      left = 0.0
+      top = 0.0
+   endwith
+
+   with (this.printer)
+      duplex = 1	// None
+      orientation = 1	// Portrait
+      paperSource = 7
+      paperSize = 1
+      resolution = 0	// Default
+      color = 1	// Monochrome
+      trueTypeFonts = 0	// Default
+   endwith
+
+   this.STREAMSOURCE1.GROUP1 = new GROUP(this.STREAMSOURCE1)
+   with (this.STREAMSOURCE1.GROUP1)
+      groupBy = "Company"
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDHEADINGTEXT1)
+      height = 0.2083
+      left = 0.9896
+      top = 0.0
+      width = 2.7396
+      fontBold = true
+      text = "Total mugs on hand for this supplier:"
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.footerBand)
+   with (this.STREAMSOURCE1.GROUP1.footerBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 3.8646
+      top = 0.0
+      width = 0.4688
+      alignHorizontal = 2	// Right
+      picture = "999"
+      fontBold = true
+      text = {||this.parent.parent.agSum( {|| this.parent.rowset.parent.parent.inventory1.rowset.fields[ "qty"].value})}
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.TEXT1 = new TEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.TEXT1)
+      height = 0.2083
+      left = 0.0
+      top = 0.0
+      width = 0.9063
+      prefixEnable = false
+      fontSize = 12.0
+      fontBold = true
+      text = "Supplier:"
+   endwith
+
+   this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.GROUP1.headerBand)
+   with (this.STREAMSOURCE1.GROUP1.headerBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 0.9896
+      top = 0.0097
+      width = 2.7188
+      fontSize = 12.0
+      fontBold = true
+      text = {||form.streamsource1.rowset.fields["Company"].value}
+   endwith
+
+   with (this.STREAMSOURCE1.detailBand)
+      height = 0.0
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.2083
+      left = 0.125
+      top = 0.0
+      width = 0.5625
+      alignHorizontal = 2	// Right
+      suppressIfBlank = true
+      fontBold = true
+      text = "Item ID"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.2083
+      left = 1.0937
+      top = 0.0
+      width = 0.75
+      alignHorizontal = 0	// Left
+      suppressIfBlank = true
+      fontBold = true
+      text = "Description"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.2083
+      left = 3.6979
+      top = 0.0
+      width = 0.6875
+      alignHorizontal = 2	// Right
+      suppressIfBlank = true
+      fontBold = true
+      text = "Quantity"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 0.2083
+      top = 0.1764
+      width = 0.4792
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Item ID"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT2 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT2)
+      height = 0.2083
+      left = 1.0938
+      top = 0.1868
+      width = 2.6146
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Description"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT3 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT3)
+      height = 0.2083
+      left = 3.802
+      top = 0.1868
+      width = 0.5417
+      alignHorizontal = 2	// Right
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Qty"].value}
+   endwith
+
+   form.STREAMFRAME1 = form.pagetemplate1.streamframe1
+
+   with (this.PAGETEMPLATE1.MYREPORTTITLETEXT1)
+      height = 0.2917
+      left = 2.1459
+      top = 0.0104
+      width = 3.1979
+      text = "Inventory by Supplier"
+      form.MYREPORTTITLETEXT1 = form.pagetemplate1.myreporttitletext1
+   endwith
+
+   form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
+
+   form.PAGENUMBER1 = form.pagetemplate1.pagenumber1
+
+   this.firstPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.nextPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.streamframe1.streamSource = this.form.streamsource1
+   this.form.streamsource1.rowset = this.form.inventoryrepdatamodule1.supplier1.rowset
+
+endclass
+
