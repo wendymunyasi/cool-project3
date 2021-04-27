@@ -15,7 +15,7 @@ class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       left = 169.0
       top = 26.0
       width = 114.0
-      height = 116.0
+      height = 100.0
       database = form.dbasetutorial1
       sql = 'Select * from "CUSTOMER"'
       active = true
@@ -23,6 +23,12 @@ class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
 
    with (this.CUSTOMER1.rowset)
       canSave = class::ROWSET_CANSAVE
+      with (fields["State ID"])
+         lookupSQL = "select * from state order by state"
+      endwith
+      with (fields["Country ID"])
+         lookupSQL = "select * from country order by country"
+      endwith
       indexName = "NAMES"
    endwith
 

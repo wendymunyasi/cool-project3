@@ -15,19 +15,13 @@ class supplierDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       left = 125.0
       top = 45.0
       width = 114.0
-      height = 116.0
+      height = 124.0
       database = form.dbasetutorial1
       sql = 'Select * from "SUPPLIER"'
       active = true
    endwith
 
    with (this.SUPPLIER1.rowset)
-      with (fields["State ID"])
-         lookupSQL = "select * from state order by state"
-      endwith
-      with (fields["Country ID"])
-         lookupSQL = "select * from country order by country"
-      endwith
       indexName = "COMPANY"
    endwith
 

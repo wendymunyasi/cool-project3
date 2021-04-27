@@ -25,6 +25,8 @@ class invoiceDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       autoEdit = false
       indexName = "NAMES"
    endwith
+	
+	this.rowset = this.CUSTOMER1.rowset
 
    this.INVOICE1 = new QUERY(this)
    with (this.INVOICE1)

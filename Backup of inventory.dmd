@@ -15,16 +15,13 @@ class inventoryDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       left = 181.0
       top = 33.0
       width = 114.0
-      height = 116.0
+      height = 124.0
       database = form.dbasetutorial1
       sql = 'Select * from "INVENTORY"'
       active = true
    endwith
 
    with (this.INVENTORY1.rowset)
-      with (fields["Supplier ID"])
-         lookupSQL = "select supplier.'supplier id', company from supplier order by company"
-      endwith
       indexName = "DESCRIPTION"
    endwith
 

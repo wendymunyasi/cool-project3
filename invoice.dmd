@@ -15,7 +15,7 @@ class invoiceDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       left = 125.0
       top = 45.0
       width = 114.0
-      height = 124.0
+      height = 116.0
       database = form.dbasetutorial1
       sql = 'Select * from "CUSTOMER"'
       active = true
@@ -25,15 +25,13 @@ class invoiceDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       autoEdit = false
       indexName = "NAMES"
    endwith
-	
-	this.rowset = this.CUSTOMER1.rowset
 
    this.INVOICE1 = new QUERY(this)
    with (this.INVOICE1)
       left = 330.0
       top = 45.0
       width = 114.0
-      height = 124.0
+      height = 116.0
       database = form.dbasetutorial1
       sql = 'Select * from "INVOICE"'
       active = true
@@ -51,19 +49,23 @@ class invoiceDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       left = 542.0
       top = 46.0
       width = 114.0
-      height = 124.0
+      height = 116.0
       database = form.dbasetutorial1
       sql = 'Select * from "LINEITEM"'
       active = true
    endwith
 
    with (this.LINEITEM1.rowset)
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', inventory.'description' from inventory"
+      endwith
       autoEdit = false
       indexName = "INVOICE ID"
       masterRowset = form.invoice1.rowset
       masterFields = "Invoice ID"
    endwith
 
+   this.rowset = this.customer1.rowset
 
 endclass
 
