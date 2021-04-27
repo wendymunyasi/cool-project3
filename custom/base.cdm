@@ -1,0 +1,13 @@
+** END HEADER -- do not remove this line
+class baseCDATAMODULE of DATAMODULE custom
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 19.0
+      top = 135.0
+      databaseName = "dbasetutorial"
+      active = true
+   endwith
+
+
+endclass
+

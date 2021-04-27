@@ -1,0 +1,56 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 27/04/2021
+//
+class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
+   with (this.DBASETUTORIAL1)
+      left = 18.0
+      top = 126.0
+      width = 115.0
+      height = 112.0
+   endwith
+
+   this.CUSTOMER1 = new QUERY(this)
+   with (this.CUSTOMER1)
+      left = 169.0
+      top = 26.0
+      width = 114.0
+      height = 108.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "CUSTOMER"'
+      active = true
+   endwith
+
+   with (this.CUSTOMER1.rowset)
+      canSave = class::ROWSET_CANSAVE
+      with (fields["State ID"])
+         lookupSQL = "select * from state order by state"
+      endwith
+      with (fields["Country ID"])
+         lookupSQL = "select * from country order by country"
+      endwith
+      indexName = "NAMES"
+   endwith
+
+   this.rowset = this.customer1.rowset
+
+   function rowset_canSave()
+      local cErrors, bRetVal
+		cErrors = "" // string for erros
+		if empty( this.fields[ "Last Name" ].value )
+			cErrors += "- LAST NAME cannot be blank" + chr(13)
+		endif
+		if empty( this.fields[ "Postal" ].value)
+			cErrors += "- POSTAL CODE cannot be blank" + chr(13)
+		endif
+		if "" # cErrors
+			msgbox( "Can't save entry because:" + chr(13) + cErrors, "Bad entry", ;
+					   48 )
+			bRetVal = false
+		else
+			bRetVal = true
+		endif
+      return bRetVal
+
+endclass
+
