@@ -1,0 +1,67 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 27/04/2021
+//
+class invoiceDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
+   with (this.DBASETUTORIAL1)
+      left = 19.0
+      top = 135.0
+      width = 115.0
+      height = 112.0
+   endwith
+
+   this.CUSTOMER1 = new QUERY(this)
+   with (this.CUSTOMER1)
+      left = 125.0
+      top = 45.0
+      width = 114.0
+      height = 124.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "CUSTOMER"'
+      active = true
+   endwith
+
+   with (this.CUSTOMER1.rowset)
+      autoEdit = false
+      indexName = "NAMES"
+   endwith
+
+   this.INVOICE1 = new QUERY(this)
+   with (this.INVOICE1)
+      left = 330.0
+      top = 45.0
+      width = 114.0
+      height = 124.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "INVOICE"'
+      active = true
+   endwith
+
+   with (this.INVOICE1.rowset)
+      autoEdit = false
+      indexName = "INVOICE ID"
+      masterRowset = form.customer1.rowset
+      masterFields = "Customer ID"
+   endwith
+
+   this.LINEITEM1 = new QUERY(this)
+   with (this.LINEITEM1)
+      left = 542.0
+      top = 46.0
+      width = 114.0
+      height = 124.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "LINEITEM"'
+      active = true
+   endwith
+
+   with (this.LINEITEM1.rowset)
+      autoEdit = false
+      indexName = "INVOICE ID"
+      masterRowset = form.invoice1.rowset
+      masterFields = "Invoice ID"
+   endwith
+
+
+endclass
+
