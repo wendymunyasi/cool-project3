@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 27/04/2021
+// Generated on 28/04/2021
 //
 class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
    with (this.DBASETUTORIAL1)
@@ -12,10 +12,11 @@ class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
 
    this.CUSTOMER1 = new QUERY(this)
    with (this.CUSTOMER1)
+      onOpen = class::CUSTOMER1_ONOPEN
       left = 169.0
       top = 26.0
-      width = 114.0
-      height = 100.0
+      width = 167.0
+      height = 218.0
       database = form.dbasetutorial1
       sql = 'Select * from "CUSTOMER"'
       active = true
@@ -29,10 +30,23 @@ class customerDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
       with (fields["Country ID"])
          lookupSQL = "select * from country order by country"
       endwith
+      with (fields["Full Name"])
+         beforeGetValue = class::FULLNAME_BEFOREGETVALUE
+      endwith
       indexName = "NAMES"
    endwith
 
    this.rowset = this.customer1.rowset
+
+   function CUSTOMER1_onOpen()
+      class::calcField("Full Name",30)
+      return
+
+   function FullName_beforeGetValue()
+		local a
+		a = trim( this.parent["first name"].value ) + " " ;
+		+this.parent["last name"].value
+		return a
 
    function rowset_canSave()
       local cErrors, bRetVal

@@ -10,13 +10,15 @@ class baseCDATAMODULE of DATAMODULE custom
       active = true
    endwith
 
-	function calcField(cName,nLength)
-		local oField
-		oField = new field()
-		oField.fieldname := cName
-		oField.length := nLength
-		this.rowset.fields.add(oField)
-	return
+
+
+function calcField(cName,nLength)
+	local oField
+	oField = new field()
+	ofield.fieldname := cName
+	oField.length := nLength
+	this.rowset.fields.add(oField)
+return
 
 endclass
 
