@@ -238,7 +238,7 @@ class MYTITLETEXT(parentObj) of MYTEXT(parentObj) custom
 
 endclass
 
-class MYTOOLBAR(parentObj) of CONTAINER(parentObj) custom
+class MYTOOLBAR(parentObj, name) of CONTAINER(parentObj, name) custom
    with (this)
       left = 133.0
       top = 517.0
@@ -380,7 +380,7 @@ class MYTOOLBAR(parentObj) of CONTAINER(parentObj) custom
                 endif
       return
 endclass
-class MYIMAGE(parentObj) of IMAGE(parentObj) custom
+class MYIMAGE(parentObj, name) of IMAGE(parentObj, name) custom
    with (this)
       height = 88.0
       left = 294.0
