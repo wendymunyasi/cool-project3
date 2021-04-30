@@ -1,0 +1,115 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 30/04/2021
+//
+parameter bModal
+local f
+f = new InventoryForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class InventoryForm of DataFormCForm from :DT_Custom:DataForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to inventory.dmd additive
+   set procedure to :FormControls:seeker.cc additive
+   with (this)
+      height = 365.0
+      left = 140.0
+      top = 68.0
+      width = 624.0
+   endwith
+
+   this.INVENTORYDATAMODULE1 = new INVENTORYDATAMODULE()
+   this.INVENTORYDATAMODULE1.parent = this
+   with (this.INVENTORYDATAMODULE1)
+      left = 439.0
+      top = 165.0
+      width = 100.0
+      height = 37.0
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Inventory"
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 76.0
+      top = 106.0
+      width = 84.0
+      text = "Description:"
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 76.0
+      top = 142.0
+      width = 84.0
+      text = "Qty on Hand:"
+   endwith
+
+   this.MYTEXTLABEL4 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL4)
+      height = 22.0
+      left = 74.0
+      top = 176.0
+      width = 84.0
+      text = "Supplier:"
+   endwith
+
+   this.MYTEXTLABEL5 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL5)
+      height = 22.0
+      left = 71.0
+      top = 205.0
+      width = 84.0
+      text = "Picture:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["description"]
+      height = 22.0
+      left = 171.0
+      top = 104.0
+      width = 262.0
+   endwith
+
+   this.MYSPINBOX1 = new MYSPINBOX(this)
+   with (this.MYSPINBOX1)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["qty"]
+      height = 22.0
+      left = 171.0
+      top = 139.0
+      width = 70.0
+      picture = "99999"
+   endwith
+
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.inventorydatamodule1.inventory1.rowset.fields["supplier id"]
+      height = 22.0
+      left = 171.0
+      top = 174.0
+      width = 232.0
+   endwith
+
+   this.MYIMAGE1 = new MYIMAGE(this)
+   with (this.MYIMAGE1)
+      height = 110.0
+      left = 170.0
+      top = 208.0
+      width = 150.0
+      dataSource = form.inventorydatamodule1.inventory1.rowset.fields["picture"]
+   endwith
+
+   this.rowset = this.inventorydatamodule1.inventory1.rowset
+
+endclass
+
