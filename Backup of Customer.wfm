@@ -17,18 +17,18 @@ class CustomerForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    set procedure to customer.dmd additive
    set procedure to :FormControls:seeker.cc additive
    with (this)
-      height = 482.0
+      height = 28.0
       left = 210.0
       top = 105.0
-      width = 666.0
+      width = 160.0
       text = "CustomInformation"
    endwith
 
    this.CUSTOMERDATAMODULE1 = new CUSTOMERDATAMODULE()
    this.CUSTOMERDATAMODULE1.parent = this
    with (this.CUSTOMERDATAMODULE1)
-      left = 498.0
-      top = 44.0
+      left = 532.0
+      top = 42.0
       width = 100.0
       height = 37.0
    endwith
@@ -81,8 +81,8 @@ class CustomerForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    endwith
 
    with (this.MYTOOLBAR1)
-      left = 115.0
-      top = 39.0
+      left = 135.0
+      top = 37.0
    endwith
 
    this.MYTEXTLABEL2 = new MYTEXTLABEL(this)

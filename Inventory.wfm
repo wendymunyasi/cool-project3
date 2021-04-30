@@ -33,7 +33,7 @@ class InventoryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    endwith
 
    with (this.MYTITLETEXT1)
-      text = "Inventory"
+      text = "Inventory Information"
    endwith
 
    with (this.SEEKER1)
@@ -48,43 +48,43 @@ class InventoryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
 
    with (this.MYGRID1)
       dataLink = form.inventorydatamodule1.inventory1.rowset
-      columns["Column1"] = new GRIDCOLUMN(form.MYGRID1)
-      with (columns["Column1"])
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
          dataLink = form.inventorydatamodule1.inventory1.rowset.fields["description"]
          editorType = 1	// EntryField
-         width = 167.0
+         width = 162.0
       endwith
-      columns["Column2"] = new GRIDCOLUMN(form.MYGRID1)
-      with (columns["Column2"])
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
          dataLink = form.inventorydatamodule1.inventory1.rowset.fields["qty"]
          editorType = 3	// SpinBox
-         width = 83.0
+         width = 86.0
       endwith
-      columns["Column3"] = new GRIDCOLUMN(form.MYGRID1)
-      with (columns["Column3"])
+      columns["COLUMN3"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN3"])
          dataLink = form.inventorydatamodule1.inventory1.rowset.fields["supplier id"]
          editorType = 4	// ComboBox
-         width = 361.0
+         width = 240.0
       endwith
-      with (columns["Column1"].headingControl)
+      with (columns["COLUMN1"].headingControl)
          value = "Description"
       endwith
 
-      with (columns["Column2"].editorControl)
+      with (columns["COLUMN2"].editorControl)
          rangeMax = 100
          rangeMin = 1
       endwith
 
-      with (columns["Column2"].headingControl)
+      with (columns["COLUMN2"].headingControl)
          value = "Qty"
       endwith
 
-      with (columns["Column3"].editorControl)
+      with (columns["COLUMN3"].editorControl)
          style = 1	// DropDownList
          dropDownHeight = 132.0
       endwith
 
-      with (columns["Column3"].headingControl)
+      with (columns["COLUMN3"].headingControl)
          value = "Company"
       endwith
 

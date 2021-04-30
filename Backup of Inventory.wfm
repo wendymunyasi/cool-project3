@@ -12,7 +12,7 @@ else
    f.open()
 endif
 
-class InventoryForm of DataFormCForm from :DT_Custom:DataForm.cfm
+class InventoryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    set procedure to inventory.dmd additive
    set procedure to :FormControls:seeker.cc additive
@@ -33,7 +33,65 @@ class InventoryForm of DataFormCForm from :DT_Custom:DataForm.cfm
    endwith
 
    with (this.MYTITLETEXT1)
-      text = "Inventory"
+      text = "Inventory Information"
+   endwith
+
+   with (this.SEEKER1)
+      left = 122.0
+      top = 13.0
+   endwith
+
+   with (this.MYTEXTLABEL1)
+      left = 41.0
+      top = 15.0
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.inventorydatamodule1.inventory1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["description"]
+         editorType = 1	// EntryField
+         width = 162.0
+      endwith
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["qty"]
+         editorType = 3	// SpinBox
+         width = 86.0
+      endwith
+      columns["COLUMN3"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN3"])
+         dataLink = form.inventorydatamodule1.inventory1.rowset.fields["supplier id"]
+         editorType = 4	// ComboBox
+         width = 240.0
+      endwith
+      with (columns["COLUMN1"].headingControl)
+         value = "Description"
+      endwith
+
+      with (columns["COLUMN2"].editorControl)
+         rangeMax = 100
+         rangeMin = 1
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "Qty"
+      endwith
+
+      with (columns["COLUMN3"].editorControl)
+         style = 1	// DropDownList
+         dropDownHeight = 132.0
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "Company"
+      endwith
+
+      height = 275.0
+      left = 41.0
+      top = 48.0
+      width = 538.0
    endwith
 
    this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
