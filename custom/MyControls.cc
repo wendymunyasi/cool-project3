@@ -391,3 +391,11 @@ class MYIMAGE(parentObj) of IMAGE(parentObj) custom
    endwith
 
 endclass
+
+class SEEKER1(parentObj) of SEEKER(parentObj) custom
+   with (this)
+      left = 122.0
+      top = 13.0
+   endwith
+
+endclass

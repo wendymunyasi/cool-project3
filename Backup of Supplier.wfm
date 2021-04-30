@@ -1,0 +1,200 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 30/04/2021
+//
+parameter bModal
+local f
+f = new SupplierForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class SupplierForm of DataFormCForm from :DT_Custom:DataForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to :FormControls:seeker.cc additive
+   set procedure to supplier.dmd additive
+   with (this)
+      height = 400.0
+      left = 197.0
+      top = 68.0
+      width = 727.0
+   endwith
+
+   this.SUPPLIERDATAMODULE1 = new SUPPLIERDATAMODULE()
+   this.SUPPLIERDATAMODULE1.parent = this
+   with (this.SUPPLIERDATAMODULE1)
+      left = 515.0
+      top = 106.0
+      width = 100.0
+      height = 37.0
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Supplier Information"
+   endwith
+
+   with (this.MYTOOLBAR1)
+      left = 172.0
+      top = 40.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 39.0
+      top = 109.0
+      width = 84.0
+      text = "Company:"
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 38.0
+      top = 145.0
+      width = 84.0
+      text = "Contact:"
+   endwith
+
+   this.MYTEXTLABEL4 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL4)
+      height = 22.0
+      left = 37.0
+      top = 177.0
+      width = 84.0
+      text = "Address:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["company"]
+      height = 22.0
+      left = 133.0
+      top = 106.0
+      width = 170.0
+   endwith
+
+   this.MYENTRYFIELD2 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD2)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["contact"]
+      height = 22.0
+      left = 133.0
+      top = 141.0
+      width = 150.0
+   endwith
+
+   this.MYENTRYFIELD3 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD3)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["steet1"]
+      height = 22.0
+      left = 133.0
+      top = 175.0
+      width = 150.0
+   endwith
+
+   this.MYENTRYFIELD4 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD4)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["steet2"]
+      height = 22.0
+      left = 133.0
+      top = 202.0
+      width = 150.0
+   endwith
+
+   this.MYENTRYFIELD5 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD5)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["city"]
+      height = 22.0
+      left = 133.0
+      top = 229.0
+      width = 150.0
+   endwith
+
+   this.MYTEXTLABEL5 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL5)
+      height = 22.0
+      left = 38.0
+      top = 261.0
+      width = 84.0
+      text = "Phone:"
+   endwith
+
+   this.MYENTRYFIELD6 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD6)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["phone"]
+      height = 22.0
+      left = 133.0
+      top = 260.0
+      width = 130.0
+   endwith
+
+   this.MYTEXTLABEL6 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL6)
+      height = 22.0
+      left = 38.0
+      top = 329.0
+      width = 84.0
+      text = "Email:"
+   endwith
+
+   this.MYENTRYFIELD7 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD7)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["email"]
+      height = 22.0
+      left = 133.0
+      top = 328.0
+      width = 257.0
+   endwith
+
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["state id"]
+      height = 22.0
+      left = 290.0
+      top = 229.0
+      width = 159.0
+   endwith
+
+   this.MYENTRYFIELD8 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD8)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["postal"]
+      height = 22.0
+      left = 455.0
+      top = 229.0
+      width = 84.0
+   endwith
+
+   this.MYCOMBOBOX2 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX2)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["country id"]
+      height = 22.0
+      left = 545.0
+      top = 229.0
+      width = 130.0
+   endwith
+
+   this.MYTEXTLABEL7 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL7)
+      height = 22.0
+      left = 39.0
+      top = 296.0
+      width = 84.0
+      text = "Fax:"
+   endwith
+
+   this.MYENTRYFIELD9 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD9)
+      dataLink = form.supplierdatamodule1.supplier1.rowset.fields["fax"]
+      height = 22.0
+      left = 133.0
+      top = 294.0
+      width = 130.0
+   endwith
+
+   this.rowset = this.supplierdatamodule1.supplier1.rowset
+
+endclass
+

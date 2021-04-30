@@ -1,0 +1,240 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 30/04/2021
+//
+parameter bModal
+local f
+f = new InvoiceForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class InvoiceForm of BASECFORM from :DT_Custom:Base.cfm
+   set procedure to invoice.dmd additive
+   set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to :FormControls:seeker.cc additive
+   with (this)
+      onOpen = class::FORM_ONOPEN
+      left = 238.0
+      top = 99.0
+      text = "Invoices"
+   endwith
+
+   this.INVOICEDATAMODULE1 = new INVOICEDATAMODULE()
+   this.INVOICEDATAMODULE1.parent = this
+   with (this.INVOICEDATAMODULE1)
+      left = 517.0
+      top = 36.0
+      width = 100.0
+      height = 37.0
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Invoice Information"
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 22.0
+      left = 148.0
+      top = 41.0
+      width = 84.0
+      text = "Customers:"
+   endwith
+
+   this.SEEKER1 = new SEEKER(this)
+   with (this.SEEKER1)
+      height = 22.0
+      left = 239.0
+      top = 40.0
+      width = 247.0
+   endwith
+
+   this.MYGRID1 = new MYGRID(this)
+   with (this.MYGRID1)
+      dataLink = form.invoicedatamodule1.customer1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
+         dataLink = form.invoicedatamodule1.customer1.rowset.fields["last name"]
+         editorType = 1	// EntryField
+         width = 199.0
+      endwith
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
+         dataLink = form.invoicedatamodule1.customer1.rowset.fields["first name"]
+         editorType = 1	// EntryField
+         width = 177.0
+      endwith
+      columns["COLUMN3"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN3"])
+         dataLink = form.invoicedatamodule1.customer1.rowset.fields["city"]
+         editorType = 1	// EntryField
+         width = 118.0
+      endwith
+      with (columns["COLUMN1"].headingControl)
+         value = "Last Name"
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "First Name"
+      endwith
+
+      with (columns["COLUMN3"].headingControl)
+         value = "City"
+      endwith
+
+      height = 159.0
+      left = 63.0
+      top = 84.0
+      width = 545.0
+   endwith
+
+   this.INVOICECONTAINER = new MYCONTAINER(this)
+   with (this.INVOICECONTAINER)
+      left = 161.0
+      top = 274.0
+      width = 340.0
+      height = 161.0
+   endwith
+
+   this.INVOICECONTAINER.MYTEXTLABEL1 = new MYTEXTLABEL(this.INVOICECONTAINER)
+   with (this.INVOICECONTAINER.MYTEXTLABEL1)
+      height = 22.0
+      left = 20.0
+      top = 14.0
+      width = 84.0
+      text = "Invoices:"
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.INVOICEBUTTONCONTAINER = new MYCONTAINER(this.INVOICECONTAINER)
+   with (this.INVOICECONTAINER.INVOICEBUTTONCONTAINER)
+      left = 108.0
+      top = 3.0
+      width = 148.0
+      height = 41.0
+      borderStyle = 3	// None
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.ADDINVOICE = new MYPUSHBUTTON(this.INVOICECONTAINER.INVOICEBUTTONCONTAINER)
+   with (this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.ADDINVOICE)
+      onClick = class::ADDINVOICE_ONCLICK
+      height = 32.0
+      left = 4.0
+      top = 4.0
+      width = 32.0
+      text = ""
+      upBitmap = "filename :Glyfx:\Aero\CE\Dbase Aero\BMP\24x24\favourites_24.bmp"
+      speedTip = '"Add invoice"'
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.EDITINVOICE = new MYPUSHBUTTON(this.INVOICECONTAINER.INVOICEBUTTONCONTAINER)
+   with (this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.EDITINVOICE)
+      height = 32.0
+      left = 39.0
+      top = 4.0
+      width = 32.0
+      text = ""
+      upBitmap = "filename :Glyfx:\Aero\CE\Dbase Aero\BMP\24x24\document_open_24.bmp"
+      speedTip = '"Edit this invoice"'
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.DELETEINVOICE = new MYPUSHBUTTON(this.INVOICECONTAINER.INVOICEBUTTONCONTAINER)
+   with (this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.DELETEINVOICE)
+      height = 32.0
+      left = 74.0
+      top = 4.0
+      width = 32.0
+      text = ""
+      upBitmap = "filename :Glyfx:\Aero\CE\Dbase Aero\BMP\24x24\delete_24.bmp"
+      speedTip = '"Delete this invoice"'
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.PRINTINVOICE = new MYPUSHBUTTON(this.INVOICECONTAINER.INVOICEBUTTONCONTAINER)
+   with (this.INVOICECONTAINER.INVOICEBUTTONCONTAINER.PRINTINVOICE)
+      height = 32.0
+      left = 110.0
+      top = 4.0
+      width = 32.0
+      text = ""
+      upBitmap = "filename :Glyfx:\Aero\CE\Dbase Aero\BMP\24x24\print_24.bmp"
+      pageno = 0
+   endwith
+
+   this.INVOICECONTAINER.MYGRID1 = new MYGRID(this.INVOICECONTAINER)
+   with (this.INVOICECONTAINER.MYGRID1)
+      dataLink = form.invoicedatamodule1.invoice1.rowset
+      columns["COLUMN1"] = new GRIDCOLUMN(form.INVOICECONTAINER.MYGRID1)
+      with (columns["COLUMN1"])
+         dataLink = form.invoicedatamodule1.invoice1.rowset.fields["invoice id"]
+         editorType = 1	// EntryField
+         width = 105.0
+      endwith
+      columns["COLUMN2"] = new GRIDCOLUMN(form.INVOICECONTAINER.MYGRID1)
+      with (columns["COLUMN2"])
+         dataLink = form.invoicedatamodule1.invoice1.rowset.fields["order date"]
+         editorType = 3	// SpinBox
+         width = 143.0
+      endwith
+      with (columns["COLUMN1"].headingControl)
+         value = "Invoice ID"
+      endwith
+
+      with (columns["COLUMN2"].editorControl)
+         rangeMax = {20/03/2017}
+         rangeMin = {10/12/2016}
+      endwith
+
+      with (columns["COLUMN2"].headingControl)
+         value = "Order Date"
+      endwith
+
+      vScrollBar = 1	// On
+      pageno = 0
+      height = 98.0
+      left = 25.0
+      top = 49.0
+      width = 292.0
+   endwith
+
+   this.rowset = this.invoicedatamodule1.customer1.rowset
+
+   function ADDINVOICE_onClick()
+      local fInvoice
+		set procedure to invoiceEdit.wfm
+		fInvoice = new InvoiceEditForm()
+		// add a custom property (note that the
+		// form.rowset is pointing to the customer rowset)
+		fInvoice.CustomerID = form.rowset.fields["customer id"].value
+		// let the invoice form know we're in "Append" mode
+		fInvoice.Mode = "Append"
+		// open the form:
+		fInvoice.readModal()
+		// close the procedure file:
+		close procedure invoiceEdit.wfm
+		if form.invoicedatamodule1.lineitem1.rowset.endOfSet
+			// go to last row, which is the one we just added
+			form.invoicedatamodule1.invoice1.rowset.last()
+			// because an invoice is useless without a line item
+			class::AddLineItem_onClick()
+		endif
+		// refresh the controls on screen ...
+		form.invoicedatamodule1.invoice1.rowset.refreshControls()
+		return
+
+   function form_onOpen()
+      // Call the onOpen method of the dataform custom
+		// form. Note we must use the Source Alias:
+		set procedure to :DT_Custom:dataform.cfm additive
+		dataformCForm::form_onOpen()
+      return
+
+endclass
+

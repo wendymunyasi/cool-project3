@@ -238,7 +238,7 @@ class MYTITLETEXT(parentObj) of MYTEXT(parentObj) custom
 
 endclass
 
-class MYTOOLBAR(parentObj, name) of CONTAINER(parentObj, name) custom
+class MYTOOLBAR(parentObj) of CONTAINER(parentObj) custom
    with (this)
       left = 133.0
       top = 517.0
@@ -380,7 +380,7 @@ class MYTOOLBAR(parentObj, name) of CONTAINER(parentObj, name) custom
                 endif
       return
 endclass
-class MYIMAGE(parentObj, name) of IMAGE(parentObj, name) custom
+class MYIMAGE(parentObj) of IMAGE(parentObj) custom
    with (this)
       height = 88.0
       left = 294.0
@@ -388,6 +388,14 @@ class MYIMAGE(parentObj, name) of IMAGE(parentObj, name) custom
       width = 84.0
       metric = 6	// Pixels
       alignment = 3	// Keep Aspect Stretch
+   endwith
+
+endclass
+
+class SEEKER1(parentObj, name) of SEEKER(parentObj, name) custom
+   with (this)
+      left = 122.0
+      top = 13.0
    endwith
 
 endclass
