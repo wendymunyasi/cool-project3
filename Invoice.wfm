@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 30/04/2021
+// Generated on 02/05/2021
 //
 parameter bModal
 local f
@@ -13,13 +13,15 @@ else
 endif
 
 class InvoiceForm of BASECFORM from :DT_Custom:Base.cfm
-   set procedure to invoice.dmd additive
    set procedure to :DT_Custom:MyControls.cc additive
    set procedure to :FormControls:seeker.cc additive
+   set procedure to invoice.dmd additive
    with (this)
       onOpen = class::FORM_ONOPEN
-      left = 238.0
+      height = 482.0
+      left = 226.0
       top = 99.0
+      width = 670.0
       text = "Invoices"
    endwith
 
