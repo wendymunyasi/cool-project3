@@ -1,0 +1,130 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 03/05/2021
+//
+parameter bModal
+local f
+f = new StateForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class StateForm of DataFormCForm from :DT_Custom:DataForm.cfm
+   set procedure to :FormControls:seeker.cc additive
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      height = 285.0
+      left = 72.0
+      top = 425.0
+      width = 437.0
+   endwith
+
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 328.0
+      top = 87.0
+      width = 81.0
+      height = 37.0
+      databaseName = "DBASETUTORIAL"
+      active = true
+   endwith
+
+   this.STATE1 = new QUERY(this)
+   with (this.STATE1)
+      left = 16.0
+      top = 96.0
+      width = 33.0
+      height = 37.0
+      database = form.dbasetutorial1
+      sql = "select * from STATE.DBF"
+      active = true
+   endwith
+
+   with (this.STATE1.rowset)
+      indexName = "STATE"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "States"
+   endwith
+
+   with (this.SEEKER1)
+      width = 204.0
+   endwith
+
+   with (this.MYGRID1)
+      dataLink = form.state1.rowset
+      columns["Column1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column1"])
+         dataLink = form.state1.rowset.fields["state id"]
+         editorType = 1	// EntryField
+         width = 80.0
+      endwith
+      columns["Column2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["Column2"])
+         dataLink = form.state1.rowset.fields["state"]
+         editorType = 1	// EntryField
+         width = 295.0
+      endwith
+      with (columns["Column1"].headingControl)
+         value = "State ID"
+      endwith
+
+      with (columns["Column2"].headingControl)
+         value = "State"
+      endwith
+
+      height = 194.0
+      left = 47.0
+      top = 52.0
+      width = 346.0
+   endwith
+
+   with (this.MYTOOLBAR1)
+      left = 29.0
+      top = 37.0
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 91.0
+      top = 98.0
+      width = 84.0
+      text = "State ID:"
+   endwith
+
+   this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL3)
+      height = 22.0
+      left = 88.0
+      top = 128.0
+      width = 84.0
+      text = "State:"
+   endwith
+
+   this.MYENTRYFIELD1 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD1)
+      dataLink = form.state1.rowset.fields["state id"]
+      height = 22.0
+      left = 185.0
+      top = 97.0
+      width = 42.0
+   endwith
+
+   this.MYENTRYFIELD2 = new MYENTRYFIELD(this)
+   with (this.MYENTRYFIELD2)
+      dataLink = form.state1.rowset.fields["state"]
+      height = 22.0
+      left = 185.0
+      top = 126.0
+      width = 148.0
+   endwith
+
+   this.rowset = this.state1.rowset
+
+endclass
+

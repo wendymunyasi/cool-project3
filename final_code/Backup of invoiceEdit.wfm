@@ -301,7 +301,7 @@ class InvoiceEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
             form.rowset.fields["Order Date"].value := date()
             // default value for Payment Type is "Visa"
             form.rowset.fields["Pay Type"].value   := "VI"
-            form.PAYMENTCONTAINER.VISA.value := true
+            form.MyContainer1.VISA.value           := true
             form.rowset.refreshControls()
          else
             // find the correct row:
