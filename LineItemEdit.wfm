@@ -71,15 +71,6 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
       text = "Quantity Ordered:"
    endwith
 
-   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
-   with (this.MYCOMBOBOX1)
-      dataLink = form.lineitem1.rowset.fields["item id"]
-      height = 22.0
-      left = 138.0
-      top = 62.0
-      width = 264.0
-   endwith
-
    this.MYSPINBOX1 = new MYSPINBOX(this)
    with (this.MYSPINBOX1)
       dataLink = form.lineitem1.rowset.fields["qty"]
@@ -97,6 +88,15 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
       left = 138.0
       top = 35.0
       width = 65.0
+   endwith
+
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.lineitem1.rowset.fields["item id"]
+      height = 22.0
+      left = 137.0
+      top = 62.0
+      width = 203.0
    endwith
 
    this.rowset = this.lineitem1.rowset
