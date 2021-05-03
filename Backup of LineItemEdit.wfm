@@ -12,7 +12,7 @@ else
    f.open()
 endif
 
-class LineItemEditForm of DialogFormCForm from :DT_Custom:DialogForm.cfm
+class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       onOpen = class::FORM_ONOPEN
@@ -140,5 +140,5 @@ class LineItemEditForm of DialogFormCForm from :DT_Custom:DialogForm.cfm
 		endif
       return
 
-   endclass
+endclass
 

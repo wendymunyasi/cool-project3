@@ -30,14 +30,6 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
       active = true
    endwith
 
-   with (this.LINEITEM1.rowset)
-      onNavigate = {; return false}
-      with (fields["Item ID"])
-         lookupSQL = "select inventory.'item id', description from inventory"
-      endwith
-      indexName = "INVOICE ID"
-   endwith
-
    with (this.MYTITLETEXT1)
       text = "Line Items"
    endwith
