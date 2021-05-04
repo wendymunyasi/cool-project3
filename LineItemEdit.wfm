@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 03/05/2021
+// Generated on 04/05/2021
 //
 parameter bModal
 local f
@@ -15,19 +15,39 @@ endif
 class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
+      canNavigate = {; return false}
       onOpen = class::FORM_ONOPEN
-      height = 186.0
-      width = 433.0
+      height = 170.0
+      width = 470.0
+      text = "Line Items"
+   endwith
+
+   this.DBASETUTORIAL1 = new DATABASE(this)
+   with (this.DBASETUTORIAL1)
+      left = 348.0
+      top = 121.0
+      width = 81.0
+      height = 37.0
+      databaseName = "DBASETUTORIAL"
+      active = true
    endwith
 
    this.LINEITEM1 = new QUERY(this)
    with (this.LINEITEM1)
-      left = 337.0
-      top = 127.0
+      left = 12.0
+      top = 123.0
       width = 47.0
       height = 37.0
-      sql = 'select * from "C:\dBASETutorial3\tables\LINEITEM.DBF"'
+      database = form.dbasetutorial1
+      sql = "select * from LINEITEM.DBF"
       active = true
+   endwith
+
+   with (this.LINEITEM1.rowset)
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', description from inventory"
+      endwith
+      indexName = "INVOICE ID"
    endwith
 
    with (this.MYTITLETEXT1)
@@ -35,39 +55,57 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
    endwith
 
    with (this.PBSAVE)
-      left = 116.0
-      top = 133.0
+      left = 122.0
+      top = 130.0
    endwith
 
    with (this.PBCANCEL)
-      left = 226.0
-      top = 133.0
+      left = 242.0
+      top = 130.0
    endwith
 
    this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
    with (this.MYTEXTLABEL1)
       height = 22.0
-      left = 47.0
-      top = 38.0
+      left = 72.0
+      top = 35.0
       width = 84.0
       text = "Invoice:"
+   endwith
+
+   this.MYDISABLEDENTRYFIELD1 = new MYDISABLEDENTRYFIELD(this)
+   with (this.MYDISABLEDENTRYFIELD1)
+      dataLink = form.lineitem1.rowset.fields["invoice id"]
+      height = 22.0
+      left = 166.0
+      top = 34.0
+      width = 84.0
    endwith
 
    this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
    with (this.MYTEXTLABEL2)
       height = 22.0
-      left = 45.0
+      left = 70.0
       top = 63.0
       width = 84.0
       text = "Item:"
    endwith
 
+   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
+   with (this.MYCOMBOBOX1)
+      dataLink = form.lineitem1.rowset.fields["item id"]
+      height = 22.0
+      left = 166.0
+      top = 61.0
+      width = 188.0
+   endwith
+
    this.MYTEXTLABEL3 = new MYTEXTLABEL(this)
    with (this.MYTEXTLABEL3)
       height = 22.0
-      left = 12.0
-      top = 91.0
-      width = 118.0
+      left = 40.0
+      top = 88.0
+      width = 114.0
       text = "Quantity Ordered:"
    endwith
 
@@ -75,34 +113,16 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
    with (this.MYSPINBOX1)
       dataLink = form.lineitem1.rowset.fields["qty"]
       height = 22.0
-      left = 138.0
-      top = 89.0
+      left = 166.0
+      top = 90.0
       width = 70.0
       picture = "999"
-   endwith
-
-   this.MYDISABLEDENTRYFIELD1 = new MYDISABLEDENTRYFIELD(this)
-   with (this.MYDISABLEDENTRYFIELD1)
-      dataLink = form.lineitem1.rowset.fields["invoice id"]
-      height = 22.0
-      left = 138.0
-      top = 35.0
-      width = 65.0
-   endwith
-
-   this.MYCOMBOBOX1 = new MYCOMBOBOX(this)
-   with (this.MYCOMBOBOX1)
-      dataLink = form.lineitem1.rowset.fields["item id"]
-      height = 22.0
-      left = 137.0
-      top = 62.0
-      width = 203.0
    endwith
 
    this.rowset = this.lineitem1.rowset
 
    function form_onOpen()
-		// This code will be used to see if
+      // This code will be used to see if
 		// the form is being opened properly at all (in the
 		// first place -- it's supposed to be called
 		// from "Invoice.wfm"), and if so, if we are
