@@ -18,7 +18,7 @@ class invoiceForm of BASECFORM from :DT_Custom:Base.cfm
    set procedure to final_code\invoice.dmd additive
    with (this)
       onOpen = class::FORM_ONOPEN
-      height = 832.0
+      height = 795.0
       left = 178.0
       top = 21.0
       width = 658.0
