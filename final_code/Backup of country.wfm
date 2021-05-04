@@ -65,15 +65,7 @@ class countryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    endwith
 
    with (this.SEEKER1)
-      height = 22.0
-      left = 110.0
-      top = 11.0
-      width = 208.0
-   endwith
-
-   with (this.MYTEXTLABEL1)
-      left = 29.0
-      top = 13.0
+      width = 331.0
    endwith
 
    with (this.MYGRID1)

@@ -212,7 +212,7 @@ class customerForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
       left = 109.0
       top = 195.0
       width = 439.0
-      dataLink = form.customerdatamodule1.customer1.rowset.fields["comment"]
+      dataLink = form.customerdatamodule1.customer1.rowset.fields["comments"]
    endwith
 
    this.rowset = this.customerdatamodule1.customer1.rowset
