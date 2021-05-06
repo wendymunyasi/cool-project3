@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 03/05/2021
+// Generated on 06/05/2021
 //
 parameter bModal
 local f
@@ -12,13 +12,13 @@ else
    f.open()
 endif
 
-class StateForm of DataFormCForm from :DT_Custom:DataForm.cfm
+class StateForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    set procedure to :FormControls:seeker.cc additive
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       height = 285.0
-      left = 72.0
-      top = 425.0
+      left = 403.0
+      top = 117.0
       width = 437.0
    endwith
 
@@ -57,23 +57,23 @@ class StateForm of DataFormCForm from :DT_Custom:DataForm.cfm
 
    with (this.MYGRID1)
       dataLink = form.state1.rowset
-      columns["Column1"] = new GRIDCOLUMN(form.MYGRID1)
-      with (columns["Column1"])
+      columns["COLUMN1"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN1"])
          dataLink = form.state1.rowset.fields["state id"]
          editorType = 1	// EntryField
          width = 80.0
       endwith
-      columns["Column2"] = new GRIDCOLUMN(form.MYGRID1)
-      with (columns["Column2"])
+      columns["COLUMN2"] = new GRIDCOLUMN(form.MYGRID1)
+      with (columns["COLUMN2"])
          dataLink = form.state1.rowset.fields["state"]
          editorType = 1	// EntryField
          width = 295.0
       endwith
-      with (columns["Column1"].headingControl)
+      with (columns["COLUMN1"].headingControl)
          value = "State ID"
       endwith
 
-      with (columns["Column2"].headingControl)
+      with (columns["COLUMN2"].headingControl)
          value = "State"
       endwith
 
