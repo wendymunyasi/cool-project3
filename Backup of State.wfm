@@ -17,8 +17,8 @@ class StateForm of DataFormCForm from :DT_Custom:DataForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       height = 285.0
-      left = 73.0
-      top = 440.0
+      left = 72.0
+      top = 425.0
       width = 437.0
    endwith
 
