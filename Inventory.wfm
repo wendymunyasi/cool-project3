@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 30/04/2021
+// Generated on 07/05/2021
 //
 parameter bModal
 local f
@@ -13,13 +13,13 @@ else
 endif
 
 class InventoryForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
-   set procedure to :DT_Custom:MyControls.cc additive
-   set procedure to inventory.dmd additive
    set procedure to :FormControls:seeker.cc additive
+   set procedure to inventory.dmd additive
+   set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       height = 365.0
-      left = 140.0
-      top = 68.0
+      left = 311.0
+      top = 67.0
       width = 624.0
    endwith
 
