@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 06/05/2021
+// Generated on 12/05/2021
 //
 parameter bModal
 local f
@@ -17,8 +17,8 @@ class StateForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       height = 285.0
-      left = 403.0
-      top = 117.0
+      left = 434.0
+      top = 113.0
       width = 437.0
    endwith
 
