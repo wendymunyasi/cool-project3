@@ -16,7 +16,7 @@ class AboutForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
    set procedure to :DT_Custom:MyControls.cc additive
    with (this)
       onOpen = class::FORM_ONOPEN
-      height = 261.0
+      height = 256.0
       left = 139.0
       top = 165.0
       width = 418.0
