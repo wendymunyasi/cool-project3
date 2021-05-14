@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 04/05/2021
+// Generated on 14/05/2021
 //
 parameter bModal
 local f
@@ -18,6 +18,8 @@ class LineItemEditForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
       canNavigate = {; return false}
       onOpen = class::FORM_ONOPEN
       height = 170.0
+      left = 360.0
+      top = 209.0
       width = 470.0
       text = "Line Items"
    endwith
