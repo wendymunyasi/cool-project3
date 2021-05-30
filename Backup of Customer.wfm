@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 24/05/2021
+// Generated on 26/05/2021
 //
 parameter bModal
 local f
@@ -13,13 +13,13 @@ else
 endif
 
 class CustomerForm of DATAFORMCFORM from :DT_Custom:DataForm.cfm
-   set procedure to customer.dmd additive
    set procedure to :DT_Custom:MyControls.cc additive
+   set procedure to customer.dmd additive
    set procedure to :FormControls:seeker.cc additive
    with (this)
       height = 474.0
-      left = 243.0
-      top = 75.0
+      left = 233.0
+      top = 76.0
       width = 678.0
       text = "CustomInformation"
    endwith
