@@ -1,0 +1,77 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 05/06/2021
+//
+local r
+r = new suppliersReport()
+r.render()
+
+class suppliersReport of baseCReport from :DT_Custom:base.crp
+   set procedure to supplier.dmd additive
+   set procedure to :DT_Custom:CustomReportControls.cc additive
+   with (this)
+      title = "Suppliers"
+   endwith
+
+   this.SUPPLIERDATAMODULE1 = new SUPPLIERDATAMODULE()
+   this.SUPPLIERDATAMODULE1.parent = this
+   with (this.SUPPLIERDATAMODULE1)
+      left = 0.6771
+      top = 0.6354
+      width = 0.0
+      height = 0.0
+   endwith
+
+   form.STREAMFRAME1 = form.pagetemplate1.streamframe1
+
+   with (this.PAGETEMPLATE1.MYREPORTTITLETEXT1)
+      height = 0.3021
+      left = 2.4375
+      top = 0.0896
+      width = 2.9062
+      text = "Suppliers Report"
+      form.MYREPORTTITLETEXT1 = form.pagetemplate1.myreporttitletext1
+   endwith
+
+   form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
+
+   with (this.STREAMSOURCE1.detailBand)
+      height = 2.0
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1)
+      height = 0.21
+      left = 0.1042
+      top = 0.191
+      width = 1.0
+      fontBold = true
+      text = "Company:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 1.1771
+      top = 0.2014
+      width = 1.5521
+      text = {||form.streamSource1.rowset.fields["Company"].value}
+   endwith
+
+   with (this.printer)
+      duplex = 1	// None
+      orientation = 1	// Portrait
+      paperSource = 15
+      paperSize = 1
+      resolution = 0	// Default
+      color = 2	// Color
+      trueTypeFonts = 3	// Substitute
+   endwith
+
+   this.firstPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.nextPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.streamframe1.streamSource = this.form.streamsource1
+   this.form.streamsource1.rowset = this.form.supplierdatamodule1.supplier1.rowset
+
+endclass
+
