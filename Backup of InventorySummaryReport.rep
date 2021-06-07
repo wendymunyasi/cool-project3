@@ -1,0 +1,125 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 07/06/2021
+//
+local r
+r = new InventorySummaryReportReport()
+r.render()
+
+class InventorySummaryReportReport of baseCReport from :DT_Custom:base.crp
+   set procedure to :DT_Custom:CustomReportControls.cc additive
+   with (this)
+      title = "Inventory by Supplier"
+   endwith
+
+   this.INVENTORYREPDATAMODULE1 = new INVENTORYREPDATAMODULE()
+   this.INVENTORYREPDATAMODULE1.parent = this
+   with (this.INVENTORYREPDATAMODULE1)
+      left = 0.0
+      top = 0.0
+      width = 0.0
+      height = 0.0
+   endwith
+
+   with (this.printer)
+      duplex = 1	// None
+      orientation = 1	// Portrait
+      paperSource = 15
+      paperSize = 1
+      resolution = 0	// Default
+      color = 2	// Color
+      trueTypeFonts = 3	// Substitute
+   endwith
+
+   with (this.STREAMSOURCE1.detailBand)
+      height = 0.0
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.21
+      left = 0.1875
+      top = 0.11
+      width = 0.875
+      suppressIfBlank = true
+      fontBold = true
+      text = "<p>Item ID</p><p></p>"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.21
+      left = 1.6979
+      top = 0.11
+      width = 1.0729
+      alignHorizontal = 0	// Left
+      suppressIfBlank = true
+      fontBold = true
+      text = "Description"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3)
+      canRender = {||this.parent.firstOnFrame}
+      height = 0.21
+      left = 4.4583
+      top = 0.11
+      width = 0.6667
+      suppressIfBlank = true
+      fontBold = true
+      text = "Quantity"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 0.1979
+      top = 0.4201
+      width = 0.7396
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Item ID"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT2 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT2)
+      height = 0.2083
+      left = 1.6667
+      top = 0.441
+      width = 1.5104
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Description"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT3 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT3)
+      height = 0.2083
+      left = 4.4479
+      top = 0.4306
+      width = 1.0938
+      text = {||this.form.inventoryrepdatamodule1.inventory1.rowset.fields["Qty"].value}
+   endwith
+
+   with (this.PAGETEMPLATE1)
+      height = 5.0
+   endwith
+
+   form.STREAMFRAME1 = form.pagetemplate1.streamframe1
+
+   with (this.PAGETEMPLATE1.MYREPORTTITLETEXT1)
+      height = 0.3021
+      left = 2.4375
+      top = 0.0896
+      width = 2.9062
+      text = "Inventory by Supplier"
+      form.MYREPORTTITLETEXT1 = form.pagetemplate1.myreporttitletext1
+   endwith
+
+   form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
+
+   this.firstPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.nextPageTemplate = this.form.pagetemplate1
+   this.form.pagetemplate1.streamframe1.streamSource = this.form.streamsource1
+   this.form.streamsource1.rowset = this.form.inventoryrepdatamodule1.supplier1.rowset
+
+endclass
+

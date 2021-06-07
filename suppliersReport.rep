@@ -172,8 +172,8 @@ class SUPPLIERSREPORT of BASECREPORT from :DT_Custom:base.crp
    this.STREAMSOURCE1.detailBand.MYFIELDTEXT8 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
    with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT8)
       height = 0.2083
-      left = 1.5896
-      top = 1.2534
+      left = 1.6
+      top = 1.1909
       width = 1.4271
       suppressIfBlank = true
       text = {||form.streamSource1.rowset.fields["Steet2"].value}
