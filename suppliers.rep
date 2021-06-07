@@ -1,14 +1,14 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 05/06/2021
+// Generated on 07/06/2021
 //
 local r
-r = new suppliersReport()
+r = new SUPPLIERSREPORT()
 r.render()
 
-class suppliersReport of baseCReport from :DT_Custom:base.crp
-   set procedure to supplier.dmd additive
+class SUPPLIERSREPORT of BASECREPORT from :DT_Custom:base.crp
    set procedure to :DT_Custom:CustomReportControls.cc additive
+   set procedure to supplier.dmd additive
    with (this)
       title = "Suppliers"
    endwith
@@ -16,10 +16,213 @@ class suppliersReport of baseCReport from :DT_Custom:base.crp
    this.SUPPLIERDATAMODULE1 = new SUPPLIERDATAMODULE()
    this.SUPPLIERDATAMODULE1.parent = this
    with (this.SUPPLIERDATAMODULE1)
-      left = 0.6771
-      top = 0.6354
+      left = 0.0
+      top = 0.0
       width = 0.0
       height = 0.0
+   endwith
+
+   with (this.STREAMSOURCE1.detailBand)
+      height = 0.0
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1)
+      height = 0.22
+      left = 0.5
+      top = 0.12
+      width = 1.0
+      fontBold = true
+      text = "Company:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
+      height = 0.2083
+      left = 1.6
+      top = 0.1285
+      width = 1.5521
+      text = {||form.streamSource1.rowset.fields["Company"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT2)
+      height = 0.22
+      left = 4.1684
+      top = 0.12
+      width = 1.0
+      fontBold = true
+      text = "Supplier ID:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT2 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT2)
+      height = 0.2083
+      left = 5.2396
+      top = 0.13
+      width = 1.55
+      text = {||form.streamSource1.rowset.fields["Supplier ID"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT3)
+      height = 0.22
+      left = 0.505
+      top = 0.4
+      width = 1.0
+      fontBold = true
+      text = "Contact:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT3 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT3)
+      height = 0.2083
+      left = 1.6
+      top = 0.42
+      width = 1.5
+      text = {||form.streamSource1.rowset.fields["Contact"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT4 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT4)
+      height = 0.2083
+      left = 4.1788
+      top = 0.4
+      width = 0.9896
+      fontBold = true
+      text = "Email:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT4 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT4)
+      height = 0.2083
+      left = 5.2396
+      top = 0.42
+      width = 2.0208
+      text = {||form.streamSource1.rowset.fields["Email"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT5 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT5)
+      height = 0.22
+      left = 0.5258
+      top = 0.65
+      width = 0.9792
+      fontBold = true
+      text = "Phone:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT5 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT5)
+      height = 0.2083
+      left = 1.6
+      top = 0.65
+      width = 1.4792
+      text = {||form.streamSource1.rowset.fields["Phone"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT6 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT6)
+      height = 0.22
+      left = 4.1996
+      top = 0.65
+      width = 0.9688
+      fontBold = true
+      text = "Fax:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT6 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT6)
+      height = 0.2083
+      left = 5.2396
+      top = 0.65
+      width = 1.5729
+      text = {||form.streamSource1.rowset.fields["Fax"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT7 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT7)
+      height = 0.22
+      left = 0.5571
+      top = 0.9201
+      width = 0.9479
+      fontBold = true
+      text = "Street1:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT7 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT7)
+      height = 0.2083
+      left = 1.6
+      top = 0.9097
+      width = 1.5104
+      text = {||form.streamSource1.rowset.fields["Steet1"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT8 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT8)
+      height = 0.22
+      left = 0.5467
+      top = 1.1942
+      width = 0.9583
+      fontBold = true
+      text = "Street2:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT8 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT8)
+      height = 0.2083
+      left = 1.6
+      top = 1.1909
+      width = 1.4271
+      suppressIfBlank = true
+      text = {||form.streamSource1.rowset.fields["Steet2"].value}
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT9 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT9)
+      height = 0.22
+      left = 0.1404
+      top = 1.4688
+      width = 1.3646
+      fontBold = true
+      text = "City, State, Postal:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT9 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT9)
+      canRender = class::MYFIELDTEXT9_CANRENDER
+      height = 0.2083
+      left = 1.6
+      top = 1.4688
+      width = 2.323
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT10 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT10)
+      height = 0.22
+      left = 0.5467
+      top = 1.7395
+      width = 0.9583
+      fontBold = true
+      text = "Country ID:"
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYFIELDTEXT10 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT10)
+      height = 0.2083
+      left = 1.6041
+      top = 1.75
+      width = 1.4375
+   endwith
+
+   this.STREAMSOURCE1.detailBand.MYLINE1 = new MYLINE(this.STREAMSOURCE1.detailBand)
+   with (this.STREAMSOURCE1.detailBand.MYLINE1)
+      left = 0.0
+      right = 7.5
+      top = 0.0729
+      bottom = 0.0729
+      width = 0
    endwith
 
    form.STREAMFRAME1 = form.pagetemplate1.streamframe1
@@ -35,29 +238,6 @@ class suppliersReport of baseCReport from :DT_Custom:base.crp
 
    form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
 
-   with (this.STREAMSOURCE1.detailBand)
-      height = 2.0
-   endwith
-
-   this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1 = new MYFIELDHEADINGTEXT(this.STREAMSOURCE1.detailBand)
-   with (this.STREAMSOURCE1.detailBand.MYFIELDHEADINGTEXT1)
-      height = 0.21
-      left = 0.1042
-      top = 0.191
-      width = 1.0
-      fontBold = true
-      text = "Company:"
-   endwith
-
-   this.STREAMSOURCE1.detailBand.MYFIELDTEXT1 = new MYFIELDTEXT(this.STREAMSOURCE1.detailBand)
-   with (this.STREAMSOURCE1.detailBand.MYFIELDTEXT1)
-      height = 0.2083
-      left = 1.1771
-      top = 0.2014
-      width = 1.5521
-      text = {||form.streamSource1.rowset.fields["Company"].value}
-   endwith
-
    with (this.printer)
       duplex = 1	// None
       orientation = 1	// Portrait
@@ -72,6 +252,17 @@ class suppliersReport of baseCReport from :DT_Custom:base.crp
    this.form.pagetemplate1.nextPageTemplate = this.form.pagetemplate1
    this.form.pagetemplate1.streamframe1.streamSource = this.form.streamsource1
    this.form.streamsource1.rowset = this.form.supplierdatamodule1.supplier1.rowset
+
+   function MYFIELDTEXT9_canRender()
+      local f
+		f = form.streamsource1.rowset.fields
+		this.text := ""
+		this.text += new string( trim( f["CITY"].value ) )
+		this.text += ", "
+		this.text += new string( trim( f["STATE ID"].value ) )
+		this.text += " "
+		this.text += new string( f["POSTAL"].value )
+      return true
 
 endclass
 
