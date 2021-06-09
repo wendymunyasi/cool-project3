@@ -1,4 +1,6 @@
 class baseCReport of REPORT custom
+   set procedure to :DT_Custom:CustomReportControls.cc additive
+   set procedure to :ReportControls:report.cc additive
    with (this)
       title = "Tutorial Custom Report"
       metric = 3	// Inches
@@ -40,8 +42,36 @@ class baseCReport of REPORT custom
       form.STREAMFRAME1 = form.pagetemplate1.streamframe1
    endwith
 
+   this.PAGETEMPLATE1.MYREPORTTITLETEXT1 = new MYREPORTTITLETEXT(this.PAGETEMPLATE1)
+   with (this.PAGETEMPLATE1.MYREPORTTITLETEXT1)
+      height = 0.2396
+      left = 2.4375
+      top = 0.0896
+      width = 2.9062
+      text = "Tutorial Custom Report"
+      form.MYREPORTTITLETEXT1 = form.pagetemplate1.myreporttitletext1
+   endwith
+
+   this.PAGETEMPLATE1.MYDATETEXT1 = new MYDATETEXT(this.PAGETEMPLATE1)
+   with (this.PAGETEMPLATE1.MYDATETEXT1)
+      height = 0.2083
+      left = 3.1458
+      top = 0.3438
+      width = 1.3229
+      form.MYDATETEXT1 = form.pagetemplate1.mydatetext1
+   endwith
+
+   this.PAGETEMPLATE1.PAGENUMBER1 = new PAGENUMBER(this.PAGETEMPLATE1)
+   with (this.PAGETEMPLATE1.PAGENUMBER1)
+      height = 0.2083
+      left = 3.6475
+      top = 9.7292
+      width = 0.2083
+      form.PAGENUMBER1 = form.pagetemplate1.pagenumber1
+   endwith
+
    with (this.reportGroup.footerBand)
-      height = 0.1736
+      height = 0.0
    endwith
 
    with (this.reportGroup.headerBand)

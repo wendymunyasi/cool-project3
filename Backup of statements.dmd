@@ -1,0 +1,51 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 09/06/2021
+//
+class statementsDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
+   with (this.DBASETUTORIAL1)
+      left = 19.0
+      top = 135.0
+      width = 115.0
+      height = 112.0
+   endwith
+
+   this.STATEMENTS1 = new QUERY(this)
+   with (this.STATEMENTS1)
+      onOpen = class::STATEMENTS1_ONOPEN
+      left = 125.0
+      top = 45.0
+      width = 114.0
+      height = 116.0
+      database = form.dbasetutorial1
+      sql = "@C:\dBASETutorial3\statements.sql"
+      active = true
+   endwith
+
+   with (this.STATEMENTS1.rowset)
+      with (fields["State ID"])
+         lookupSQL = "select * from state"
+      endwith
+      with (fields["Country ID"])
+         lookupSQL = "select * from country"
+      endwith
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', description from inventory"
+      endwith
+      with (fields["Item Price"])
+         beforeGetValue = class::ITEMPRICE_BEFOREGETVALUE
+      endwith
+   endwith
+
+
+   function ItemPrice_beforeGetValue()
+      
+      return (this.parent['Qty'].value * 10.00)
+
+   function STATEMENTS1_onOpen()
+      class::calcField("Item Price",10)
+		class::calcField("Item ID2",5)
+      return
+
+endclass
+
