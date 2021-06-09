@@ -1,0 +1,69 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 09/06/2021
+//
+class InvoiceRepDATAMODULE of BASECDATAMODULE from :DT_Custom:base.cdm
+   with (this.DBASETUTORIAL1)
+      left = 19.0
+      top = 135.0
+      width = 115.0
+      height = 112.0
+   endwith
+
+   this.INVOICE1 = new QUERY(this)
+   with (this.INVOICE1)
+      left = 125.0
+      top = 45.0
+      width = 114.0
+      height = 124.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "INVOICE"'
+      active = true
+   endwith
+
+   this.LINEITEM1 = new QUERY(this)
+   with (this.LINEITEM1)
+      left = 401.0
+      top = 15.0
+      width = 114.0
+      height = 124.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "LINEITEM"'
+      active = true
+   endwith
+
+   with (this.LINEITEM1.rowset)
+      with (fields["Item ID"])
+         lookupSQL = "select inventory.'item id', description from inventory"
+      endwith
+      indexName = "INVOICE ID"
+      masterRowset = form.invoice1.rowset
+      masterFields = "Invoice ID"
+   endwith
+
+   this.CUSTOMER1 = new QUERY(this)
+   with (this.CUSTOMER1)
+      left = 395.0
+      top = 206.0
+      width = 114.0
+      height = 136.0
+      database = form.dbasetutorial1
+      sql = 'Select * from "CUSTOMER"'
+      active = true
+   endwith
+
+   with (this.CUSTOMER1.rowset)
+      with (fields["State ID"])
+         lookupSQL = "select * from state"
+      endwith
+      with (fields["Country ID"])
+         lookupSQL = "select * from country"
+      endwith
+      indexName = "CUSTOMER ID"
+      masterRowset = form.invoice1.rowset
+      masterFields = "Customer ID"
+   endwith
+
+
+endclass
+

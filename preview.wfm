@@ -1,3 +1,9 @@
+// ---------------------------------------------------------------------------
+// This is an older version of the Preview form, if you want a newer version,
+// use the one in the dUFLP. That was not included here because it relies on
+// your having the :dUFLP: source code alias and the dUFLP installed on your
+// machine, for the tutorial it was decided that was too much ...
+// ---------------------------------------------------------------------------
 #define PROGRAMVERSION "2.15"
 /* 
    File....: PREVIEW.WFM
