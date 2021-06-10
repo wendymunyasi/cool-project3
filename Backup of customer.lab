@@ -1,3 +1,4 @@
+** END HEADER -- do not remove this line
 //
 // Generated on 10/06/2021
 //
@@ -47,8 +48,8 @@ class CUSTOMERReport of REPORT
    this.STREAMSOURCE1.detailBand.TEXT1 = new TEXT(this.STREAMSOURCE1.detailBand)
    with (this.STREAMSOURCE1.detailBand.TEXT1)
       height = 256.0
-      left = 180.0
-      top = 768.0
+      left = 135.0
+      top = 753.0
       width = 3600.0
       prefixEnable = false
       suppressIfBlank = true
@@ -387,4 +388,6 @@ class CUSTOMERReport of REPORT
    this.form.pagetemplate1.streamframe29.streamSource = this.form.streamsource1
    this.form.pagetemplate1.streamframe30.streamSource = this.form.streamsource1
    this.form.streamsource1.rowset = this.form.customer1.rowset
+
 endclass
+
