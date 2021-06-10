@@ -1,0 +1,281 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 10/06/2021
+//
+parameter formObj
+new TUTORIALMENU(formObj, "root")
+
+class TUTORIALMENU(formObj, name) of MENUBAR(formObj, name)
+   this.MENU6 = new MENU(this)
+   with (this.MENU6)
+      text = "&Window"
+   endwith
+
+   this.MENU6.MENU11 = new MENU(this.MENU6)
+   with (this.MENU6.MENU11)
+      text = "&Cascade"
+      windowMenuItem = 1	// Cascade
+   endwith
+
+   this.MENU6.MENU10 = new MENU(this.MENU6)
+   with (this.MENU6.MENU10)
+      text = "&Tile &Vertically"
+      windowMenuItem = 3	// Tile Vertically
+   endwith
+
+   this.MENU6.MENU9 = new MENU(this.MENU6)
+   with (this.MENU6.MENU9)
+      text = "&Tile Horizontally"
+      windowMenuItem = 2	// Tile Horizontally
+   endwith
+
+   this.MENU6.MENU8 = new MENU(this.MENU6)
+   with (this.MENU6.MENU8)
+      text = "&Arrange &Icons"
+      windowMenuItem = 4	// Arrange Icons
+   endwith
+
+   this.MENU6.MENU7 = new MENU(this.MENU6)
+   with (this.MENU6.MENU7)
+      onClick = {; close forms}
+      text = "&Close &All"
+      windowMenuItem = 5	// Close All
+   endwith
+
+   this.FILE = new MENU(this)
+   with (this.FILE)
+      text = "&File"
+   endwith
+
+   this.FILE.OPEN = new MENU(this.FILE)
+   with (this.FILE.OPEN)
+      text = "&Open"
+   endwith
+
+   this.FILE.OPEN.CUSTOMERS = new MENU(this.FILE.OPEN)
+   with (this.FILE.OPEN.CUSTOMERS)
+      onClick = class::CUSTOMERS_ONCLICK
+      text = "Customers"
+   endwith
+
+   this.FILE.OPEN.INVENTORY = new MENU(this.FILE.OPEN)
+   with (this.FILE.OPEN.INVENTORY)
+      onClick = class::INVENTORY_ONCLICK
+      text = "Inventory"
+   endwith
+
+   this.FILE.OPEN.SUPPLIER = new MENU(this.FILE.OPEN)
+   with (this.FILE.OPEN.SUPPLIER)
+      onClick = class::SUPPLIER_ONCLICK
+      text = "Suppliers"
+   endwith
+
+   this.FILE.OPEN.INVOICES = new MENU(this.FILE.OPEN)
+   with (this.FILE.OPEN.INVOICES)
+      onClick = class::INVOICES_ONCLICK
+      text = "Invoices"
+   endwith
+
+   this.FILE.OPEN.LOOKUPS = new MENU(this.FILE.OPEN)
+   with (this.FILE.OPEN.LOOKUPS)
+      text = "Lookups"
+   endwith
+
+   this.FILE.OPEN.LOOKUPS.STATE = new MENU(this.FILE.OPEN.LOOKUPS)
+   with (this.FILE.OPEN.LOOKUPS.STATE)
+      onClick = class::STATE_ONCLICK
+      text = "State"
+   endwith
+
+   this.FILE.OPEN.LOOKUPS.COUNTRY = new MENU(this.FILE.OPEN.LOOKUPS)
+   with (this.FILE.OPEN.LOOKUPS.COUNTRY)
+      onClick = class::COUNTRY_ONCLICK
+      text = "Country"
+   endwith
+
+   this.FILE.MENU25 = new MENU(this.FILE)
+   with (this.FILE.MENU25)
+      text = "&Close"
+   endwith
+
+   this.FILE.SEPARATOR1 = new MENU(this.FILE)
+   with (this.FILE.SEPARATOR1)
+      text = ""
+      separator = true
+   endwith
+
+   this.FILE.EXIT = new MENU(this.FILE)
+   with (this.FILE.EXIT)
+      text = "&Exit"
+   endwith
+
+   this.MENU3 = new MENU(this)
+   with (this.MENU3)
+      text = "&Reports"
+   endwith
+
+   this.MENU3.SUPPLIER = new MENU(this.MENU3)
+   with (this.MENU3.SUPPLIER)
+      onClick = class::SUPPLIER_ONCLICK1
+      text = "&Supplier Information"
+   endwith
+
+   this.MENU3.INVENTORY = new MENU(this.MENU3)
+   with (this.MENU3.INVENTORY)
+      onClick = class::INVENTORY_ONCLICK1
+      text = "&Inventory Summary"
+   endwith
+
+   this.MENU3.STATEMENTS = new MENU(this.MENU3)
+   with (this.MENU3.STATEMENTS)
+      onClick = class::STATEMENTS_ONCLICK
+      text = "&Customer Statements"
+   endwith
+
+   this.MENU3.MENU37 = new MENU(this.MENU3)
+   with (this.MENU3.MENU37)
+      text = ""
+      separator = true
+   endwith
+
+   this.MENU3.LABELS = new MENU(this.MENU3)
+   with (this.MENU3.LABELS)
+      onClick = class::LABELS_ONCLICK
+      text = "&Customer Address Labels"
+   endwith
+
+   this.MENU4 = new MENU(this)
+   with (this.MENU4)
+      text = "&Help"
+   endwith
+
+   this.MENU4.ABOUT = new MENU(this.MENU4)
+   with (this.MENU4.ABOUT)
+      onClick = class::ABOUT_ONCLICK
+      text = "&About Tutorial"
+   endwith
+
+   this.windowMenu = this.menu6
+
+	
+	function COUNTRY_onClick()
+      // open the customer form:
+		local f
+		f = new CountryForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+      return
+
+	function CUSTOMERS_onClick()
+		// open the customer form:
+		local f
+		f = new CustomerForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+		return
+
+	function INVENTORY_onClick()
+      // open the customer form:
+		local f
+		f = new InventoryForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+      return
+
+   function INVENTORY_onClick1()
+      fPreview = new PreviewForm()
+		// to open with ReadModal()
+		fPreview.bModal = true
+		fPreview.viewer.fileName := "inventory.rep"
+		fPreview.Open()
+      return
+
+   function INVOICES_onClick()
+      // open the customer form:
+		local f
+		f = new InvoiceForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+      return
+
+
+   function LABELS_onClick()
+      fPreview = new PreviewForm()
+		// to open with ReadModal()
+		fPreview.bModal = true
+		fPreview.viewer.fileName := "customerlabel.lab"
+		fPreview.Open()
+      return
+
+	function OpenForm( oForm )
+		// set the top/left properties so the form isn't
+		// *right* on top of the current one ...
+		if type( "_app.framewin.currentForm" ) == "O"
+			oForm.top := _app.framewin.currentForm.top + 40 // pixels
+			oForm.left := _app.framewin.currentForm.left + 40 // pixels
+		else
+			oForm.top := 0
+			oForm.left := 10
+		endif
+		oForm.open()
+		oForm.setFocus()
+		return
+
+   function STATEMENTS_onClick()
+      set procedure to getdates.wfm additive
+		local f
+		f = new getdatesForm()
+		f.readModal()
+		close procedure getdates.wfm
+      return
+
+   function STATE_onClick()
+      // open the customer form:
+		local f
+		f = new StateForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+      return
+
+   function SUPPLIER_onClick()
+      // open the customer form:
+		local f
+		f = new SupplierForm()
+		// call the code we created elsewhere
+		// to actually open the form
+		class::openForm( f )
+      return
+		
+
+	function ABOUT_onClick()
+      set procedure to about.wfm additive
+		f = new aboutForm()
+		f.readModal()
+		close procedure about.wfm
+      return
+
+	function CLOSE_onClick()
+		// close current form if there is one
+		if type( "_app.framewin.currentForm" ) == "O"
+			_app.framewin.currentForm.close()
+		else
+			msgbox( "The currently active form cannot be closed "+;
+						"with this option.","Can't do it!", 64 )
+		endif
+		return
+
+   function SUPPLIER_onClick1()
+      fPreview = new PreviewForm()
+		// to open with ReadModal()
+		fPreview.bModal = true
+		fPreview.viewer.fileName := "suppliers.rep"
+		fPreview.Open()
+      return
+
+endclass
+
