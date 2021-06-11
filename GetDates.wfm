@@ -1,0 +1,109 @@
+** END HEADER -- do not remove this line
+//
+// Generated on 10/06/2021
+//
+parameter bModal
+local f
+f = new GetDatesForm()
+if (bModal)
+   f.mdi = false // ensure not MDI
+   f.readModal()
+else
+   f.open()
+endif
+
+class GetDatesForm of DIALOGFORMCFORM from :DT_Custom:DialogForm.cfm
+   set procedure to :DT_Custom:MyControls.cc additive
+   with (this)
+      onOpen = class::FORM_ONOPEN
+      height = 149.0
+      left = 310.0
+      top = 177.0
+      width = 334.0
+      text = "Desired Date Range"
+   endwith
+
+   with (this.MYTITLETEXT1)
+      text = "Desired Date Range"
+   endwith
+
+   with (this.PBSAVE)
+      onClick = class::PBSAVE_ONCLICK
+      top = 100.0
+   endwith
+
+   with (this.PBCANCEL)
+      onClick = class::PBCANCEL_ONCLICK
+      top = 100.0
+   endwith
+
+   this.STARTDATESB = new MYSPINBOX(this)
+   with (this.STARTDATESB)
+      height = 22.0
+      left = 43.0
+      top = 40.0
+      width = 98.0
+      picture = ""
+      value = {  /  /    }
+   endwith
+
+   this.ENDDATESB = new MYSPINBOX(this)
+   with (this.ENDDATESB)
+      height = 22.0
+      left = 185.0
+      top = 40.0
+      width = 98.0
+      picture = ""
+      value = {  /  /    }
+   endwith
+
+   this.MYTEXTLABEL1 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL1)
+      height = 22.0
+      left = 65.0
+      top = 66.0
+      width = 64.0
+      text = "Start Date"
+   endwith
+
+   this.MYTEXTLABEL2 = new MYTEXTLABEL(this)
+   with (this.MYTEXTLABEL2)
+      height = 22.0
+      left = 181.0
+      top = 66.0
+      width = 68.0
+      text = "End Date"
+   endwith
+
+
+   function PBCANCEL_onClick()
+      // override method in super class
+		_app.Start = {}
+		_app.Stop = {}
+		form.close()
+      return
+
+   function PBSAVE_onClick()
+      // store dates to app variables
+		_app.Start = form.StartDateSB.value
+		_app.Stop = form.EndDateSB.value
+		// call report
+		set procedure to preview.wfm additive
+		set procedure to statements.rep additive
+		fPreview = new PreviewForm()
+		// to open with ReadModal()
+		fPreview.bModal = true
+		fPreview.viewer.fileName := "statements.rep"
+		fPreview.Open()
+		
+		// cleanup
+		form.close()
+      return
+
+   function form_onOpen()
+      form.StartDateSB.value = ctod('12/01/2016')
+		form.EndDateSB.value = ctod('12/31/2016')
+      return
+
+endclass
+
