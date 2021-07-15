@@ -1,6 +1,6 @@
 ** END HEADER -- do not remove this line
 //
-// Generated on 10/06/2021
+// Generated on 01/07/2021
 //
 parameter formObj
 new TUTORIALMENU(formObj, "root")
@@ -106,6 +106,7 @@ class TUTORIALMENU(formObj, name) of MENUBAR(formObj, name)
 
    this.FILE.EXIT = new MENU(this.FILE)
    with (this.FILE.EXIT)
+      onClick = class::EXIT_ONCLICK
       text = "&Exit"
    endwith
 
@@ -176,7 +177,11 @@ class TUTORIALMENU(formObj, name) of MENUBAR(formObj, name)
 		class::openForm( f )
 		return
 
-	function INVENTORY_onClick()
+	function EXIT_onClick()
+      
+      return ( _app.framewin.app.close() )
+
+   	function INVENTORY_onClick()
       // open the customer form:
 		local f
 		f = new InventoryForm()
@@ -273,7 +278,7 @@ class TUTORIALMENU(formObj, name) of MENUBAR(formObj, name)
       fPreview = new PreviewForm()
 		// to open with ReadModal()
 		fPreview.bModal = true
-		fPreview.viewer.fileName := "suppliers.rep"
+		fPreview.viewer.fileName := "suppliersReport.rep"
 		fPreview.Open()
       return
 
