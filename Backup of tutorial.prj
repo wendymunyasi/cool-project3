@@ -1,4 +1,4 @@
-Project File generated 01/07/2021 16:24:40
+Project File generated 02/07/2021 12:58:02
 
 [Project]
 Name=dbase Tutorial
@@ -8,9 +8,9 @@ Parameters=
 Author=Wendy Munyasi
 Description=This is the dBASE Application Tutorial project, building a DEO application, updated for dBASE PLUS 11, in 2017.
 Preprocessor=
-LogFileName=
+LogFileName=C:\dBASETutorial\tutorial.log
 PrefPathFormat=R
-TargetFileName=C:\dBASETutorial3\deploy\tutorial.exe
+TargetFileName=C:\dBASETutorial\deploy\tutorial.exe
 IconFileName=Mugs.ico
 SplashFileName=tutoriallogo.bmp
 MostRecentSelectedFileName=
@@ -82,12 +82,12 @@ tutoriallogo.bmp,0,0,0,
 Mugs.ico,0,0,0, 
 
 [DEO]
-DEO0=C:\dBASETutorial3\deploy
-DEO1=C:\dBASETutorial3\deploy\custom
-DEO2=C:\dBASETutorial3\deploy\images
+DEO0=C:\dBASETutorial\deploy
+DEO1=C:\dBASETutorial\deploy\custom
+DEO2=C:\dBASETutorial\deploy\images
 
 [INNO]
-ProjectExeFileName=C:\dBASETutorial3\deploy\tutorial.exe
+ProjectExeFileName=C:\dBASETutorial\deploy\tutorial.exe
 ProjectMainFileName=
 ProjectdBaseVersion=dBASE 2019 13.20  b2618 (11/26/2019-EN191126)
 DefaultDirName={pf}\{#AppName}
@@ -107,7 +107,7 @@ XPLook=false
 dBaseBuild=2618
 dBaseVersion=1320
 SetupLang=en
-SepDestDir={app}
+SepDestDir=false
 BDEGroupEntries=false
 dBProgressbar=false
 dBProgressbox=false
@@ -151,7 +151,7 @@ NLLicense=
 NLBefore=
 NLAfter=
 UninsHS=true
-UninsHSAppName=tutorial
+UninsHSAppName=
 UninsHSAppId=
 UninsHSLanguages=All
 BDEUseSettings=false
@@ -171,6 +171,7 @@ UACRB=1
 CURRENTVSF=windows
 IMAGETOPRIGHT=
 IMAGESIDE=
+Icon1={group}\{#AppName} >> {app}\C:\dBASETutorial3\deploy\tutorial.exe
 Files1=custom\Base.cfO >> DestDir: {app}
 Files2=custom\DataForm.cfO >> DestDir: {app}
 Files3=custom\DialogForm.cfO >> DestDir: {app}
@@ -237,3 +238,5 @@ Files63=..\Users\Public\Documents\dBASE\dBASE2019\Media\Images\glyfx\Aero\CE\Dba
 Files64=..\Users\Public\Documents\dBASE\dBASE2019\Media\Images\glyfx\Aero\CE\Dbase Aero\PNG\24x24\delete_24.png >> DestDir: {app}
 Files65=tutoriallogo.bmp >> DestDir: {app}
 Files66=Mugs.ico >> DestDir: {app}
+Files67=C:\dBASETutorial3\deploy\tutorial.exe >> DestDir: {app}
+Files68=C:\dBASETutorial\deploy\tutorial.exe >> DestDir: {app}

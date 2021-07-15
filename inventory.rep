@@ -8,7 +8,7 @@ r.render()
 
 class inventoryReport of BASECREPORT from :DT_Custom:base.crp
    set procedure to :DT_Custom:CustomReportControls.cc additive
-   set procedure to C:\dBASETutorial3\InventoryRep.dmd additive
+   set procedure to C:\dBASETutorial\InventoryRep.dmd additive
    with (this)
       title = "Inventory by Supplier"
    endwith

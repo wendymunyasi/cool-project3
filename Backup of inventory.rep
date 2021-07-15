@@ -8,7 +8,7 @@ r.render()
 
 class inventoryReport of BASECREPORT from :DT_Custom:base.crp
    set procedure to :DT_Custom:CustomReportControls.cc additive
-   set procedure to C:\dBASETutorial3\InventoryRep.dmd additive
+   set procedure to C:\dBASETutorial\InventoryRep.dmd additive
    with (this)
       title = "Inventory by Supplier"
    endwith
@@ -67,6 +67,7 @@ class inventoryReport of BASECREPORT from :DT_Custom:base.crp
       left = 0.9792
       top = 0.0347
       width = 1.5104
+      fontBold = true
       text = {||form.streamsource1.rowset.fields["Company"].value}
    endwith
 
